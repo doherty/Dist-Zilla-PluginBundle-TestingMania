@@ -1,0 +1,139 @@
+NAME
+    Dist::Zilla::PluginBundle::TestingMania - A bundle to test your dist
+    with every testing plugin conceivable
+
+VERSION
+    version 0.001
+
+DESCRIPTION
+    This plugin bundle collects all the testing plugins for Dist::Zilla
+    which exist (and are not deprecated). This is for the most paranoid
+    people who want to test their dist seven ways to Sunday.
+
+    Simply add the following near the end of dist.ini:
+
+        [@TestingMania]
+
+    It includes the most recent version (as of release time) of the
+    following plugins, in their default configuration. Note that not all the
+    plugins are actually *used* by default.
+
+  Testing plugins
+    *   Dist::Zilla::Plugin::ApacheTest, which builds a Makefile.PL that
+        uses ExtUtils::MakeMaker with Apache::Test. This is not enabled by
+        default; see "Adding tests".
+
+    *   Dist::Zilla::Plugin::CheckChangesTests, which checks your Changes
+        file for correctness. See Test::CheckChanges for what that means.
+        This is not enabled by default; see "Adding tests".
+
+    *   Dist::Zilla::Plugin::CompileTests, which performs tests to syntax
+        check your dist.
+
+    *   Dist::Zilla::Plugin::ConsistentVersionTest, which tests that all
+        modules in the dist have the same version. See
+        Test::ConsistentVersion for details. This is not enabled by default;
+        see "Adding tests".
+
+    *   Dist::Zilla::Plugin::CriticTests, which checks your code against
+        best practices. See Perl::Critic for details.
+
+    *   Dist::Zilla::Plugin::DistManifestTests, which tests MANIFEST for
+        correctness. See Test::DistManifest for details.
+
+    *   Dist::Zilla::Plugin::EOLTests, which ensures the correct line
+        endings are used (and also checks for trailing whitespace). See
+        Test::EOL for details.
+
+    *   Dist::Zilla::Plugin::HasVersionTests, which tests that your dist has
+        version numbers. See Test::HasVersion for what that means.
+
+    *   Dist::Zilla::Plugin::KwaliteeTests, which performs some basic
+        kwalitee checks. *Kwalitee* is an automatically-measurable guage of
+        how good your software is. It bears only a superficial resemblance
+        to the human-measurable guage of actual quality. See Test::Kwalitee
+        for a description of the tests.
+
+    *   Dist::Zilla::Plugin::MetaTests, which performs some extra tests on
+        META.yml. See Test::CPAN::Meta for what that means.
+
+    *   Dist::Zilla::Plugin::MinimumVersionTests, which tests for the
+        minimum required version of perl. See Test::MinimumVersion for
+        details, including limitations.
+
+    *   Dist::Zilla::Plugin::NoTabsTests, which ensures you don't use *The
+        Evil Character*. See Test::NoTabs for details. If you wish to
+        exclude this plugin, see "Excluding Tests".
+
+    *   Dist::Zilla::Plugin::PodCoverageTests, which checks that you have
+        Pod documentation for the things you should have it for. See
+        Test::Pod::Coverage for what that means.
+
+    *   Dist::Zilla::Plugin::PodSpellingTests, which checks your Pod for
+        correct spelling. This is not enabled by default; see "Adding
+        tests".
+
+    *   Dist::Zilla::Plugin::PodSyntaxTests, which checks that your Pod is
+        well-formed. See Test::Pod and perlpod for details.
+
+    *   Dist::Zilla::Plugin::PortabilityTests, which performs some basic
+        tests to ensure portability of file names. See
+        Test::Portability::Files for what that means.
+
+    *   Dist::Zilla::Plugin::ProgCriticTests, which helps developers by
+        gradually enforcing coding standards. See
+        Test::Perl::Critic::Progressive for what that means. This is not
+        enabled by default; see "Adding tests".
+
+    *   Dist::Zilla::Plugin::SynopsisTests, which does syntax checking on
+        the code from your SYNOPSIS section. See Test::Synopsis for details
+        and limitations.
+
+    *   Dist::Zilla::Plugin::UnusedVarsTests, which checks your dist for
+        unused variables. See Test::Vars for details.
+
+  Excluding rests
+    To exclude a testing plugin, give a comma-separated list in dist.ini:
+
+        [@TestingMania]
+        skip = EOLTests,NoTabsTests
+
+  Adding tests
+    To add a testing plugin which is listed above, but not enabled by
+    default, give a comma-separated list in dist.ini:
+
+        [@TestingMania]
+        add = ApacheTest,PodSpellingTests
+
+    Attempting to add plugins which are not listed above will have no
+    effect.
+
+AVAILABILITY
+    The latest version of this module is available from the Comprehensive
+    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
+    CPAN site near you, or see
+    <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-TestingMania/>.
+
+    The development version lives at
+    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
+    be cloned from
+    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania>. Instead
+    of sending patches, please fork this project using the standard git and
+    github infrastructure.
+
+BUGS AND LIMITATIONS
+    No bugs have been reported.
+
+    Please report any bugs or feature requests through the web interface at
+    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>.
+
+AUTHOR
+    Mike Doherty <doherty@cs.dal.ca>
+
+COPYRIGHT AND LICENSE
+    This software is Copyright (c) 2010 by Mike Doherty.
+
+    This is free software, licensed under:
+
+      The GNU General Public License, Version 3, June 2007
+
