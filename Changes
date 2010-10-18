@@ -1,4 +1,6 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.001    
  * Initial version
