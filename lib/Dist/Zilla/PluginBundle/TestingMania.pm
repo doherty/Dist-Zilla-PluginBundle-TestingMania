@@ -2,7 +2,7 @@ use 5.0100; # We use the smart match operator
 use strict;
 use warnings;
 package Dist::Zilla::PluginBundle::TestingMania;
-# ABSTRACT: A bundle to test your dist with every testing plugin conceivable
+# ABSTRACT: test your dist with every testing plugin conceivable
 
 =head1 DESCRIPTION
 
