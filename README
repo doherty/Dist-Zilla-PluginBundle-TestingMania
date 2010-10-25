@@ -1,6 +1,6 @@
 NAME
-    Dist::Zilla::PluginBundle::TestingMania - A bundle to test your dist
-    with every testing plugin conceivable
+    Dist::Zilla::PluginBundle::TestingMania - test your dist with every
+    testing plugin conceivable
 
 VERSION
     version 0.001
@@ -128,7 +128,7 @@ BUGS AND LIMITATIONS
     <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>.
 
 AUTHOR
-    Mike Doherty <doherty@cs.dal.ca>
+    Mike Doherty <doherty@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2010 by Mike Doherty.
