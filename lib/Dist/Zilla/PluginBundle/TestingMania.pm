@@ -176,8 +176,8 @@ sub configure {
     my @include = ();
 
     my @skip = $self->payload->{skip} ? split(/, ?/, $self->payload->{skip}) : ();
-    REMOVE: foreach my $plugin (keys %plugins) {
-        next REMOVE if (            # Skip...
+    SKIP: foreach my $plugin (keys %plugins) {
+        next SKIP if (              # Skip...
             $plugin ~~ @skip or     # plugins they asked to skip
             $plugin ~~ @include or  # plugins we already included
             !$plugins{$plugin}      # plugins in the list, but which we don't want to add
