@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.001
+    version 0.002
 
 DESCRIPTION
     This plugin bundle collects all the testing plugins for Dist::Zilla
@@ -115,11 +115,11 @@ AVAILABILITY
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-TestingMania/>.
 
     The development version lives at
-    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
-    be cloned from
-    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania>. Instead
-    of sending patches, please fork this project using the standard git and
-    github infrastructure.
+    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git> and
+    may be cloned from
+    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>.
+    Instead of sending patches, please fork this project using the standard
+    git and github infrastructure.
 
 BUGS AND LIMITATIONS
     No bugs have been reported.
@@ -131,9 +131,8 @@ AUTHOR
     Mike Doherty <doherty@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is Copyright (c) 2010 by Mike Doherty.
+    This software is copyright (c) 2010 by Mike Doherty.
 
-    This is free software, licensed under:
-
-      The GNU General Public License, Version 3, June 2007
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
