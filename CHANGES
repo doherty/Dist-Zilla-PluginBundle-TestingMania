@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.002     2010-11-28
  * Flesh out the chain of dependencies to get full functionality
  * Use Perl_5 license
 
