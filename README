@@ -19,13 +19,9 @@ DESCRIPTION
     plugins are actually *used* by default.
 
   Testing plugins
-    *   Dist::Zilla::Plugin::ApacheTest, which builds a Makefile.PL that
-        uses ExtUtils::MakeMaker with Apache::Test. This is not enabled by
-        default; see "Adding tests".
-
     *   Dist::Zilla::Plugin::CheckChangesTests, which checks your Changes
         file for correctness. See Test::CheckChanges for what that means.
-        This is not enabled by default; see "Adding tests".
+        This is not enabled by default; see "Adding Tests".
 
     *   Dist::Zilla::Plugin::CompileTests, which performs tests to syntax
         check your dist.
@@ -33,7 +29,7 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::ConsistentVersionTest, which tests that all
         modules in the dist have the same version. See
         Test::ConsistentVersion for details. This is not enabled by default;
-        see "Adding tests".
+        see "Adding Tests".
 
     *   Dist::Zilla::Plugin::CriticTests, which checks your code against
         best practices. See Perl::Critic for details.
@@ -69,9 +65,11 @@ DESCRIPTION
         Pod documentation for the things you should have it for. See
         Test::Pod::Coverage for what that means.
 
-    *   Dist::Zilla::Plugin::PodSpellingTests, which checks your Pod for
-        correct spelling. This is not enabled by default; see "Adding
-        tests".
+    *   Dist::Zilla::Plugin::PodLinkTests, which tests links in your Pod for
+        invalid links, or links which return a 404 (Not Found) error when
+        you release your dist. Note that smokers won't check for 404s to
+        save hammering the network. See Test::Pod::LinkCheck and
+        Test::Pod::No404s for details.
 
     *   Dist::Zilla::Plugin::PodSyntaxTests, which checks that your Pod is
         well-formed. See Test::Pod and perlpod for details.
@@ -83,7 +81,7 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::ProgCriticTests, which helps developers by
         gradually enforcing coding standards. See
         Test::Perl::Critic::Progressive for what that means. This is not
-        enabled by default; see "Adding tests".
+        enabled by default; see "Adding Tests".
 
     *   Dist::Zilla::Plugin::SynopsisTests, which does syntax checking on
         the code from your SYNOPSIS section. See Test::Synopsis for details
@@ -92,13 +90,13 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::UnusedVarsTests, which checks your dist for
         unused variables. See Test::Vars for details.
 
-  Excluding rests
+  Excluding Tests
     To exclude a testing plugin, give a comma-separated list in dist.ini:
 
         [@TestingMania]
         skip = EOLTests,NoTabsTests
 
-  Adding tests
+  Adding Tests
     To add a testing plugin which is listed above, but not enabled by
     default, give a comma-separated list in dist.ini:
 
@@ -115,8 +113,8 @@ AVAILABILITY
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-TestingMania/>.
 
     The development version lives at
-    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git> and
-    may be cloned from
+    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
+    be cloned from
     <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>.
     Instead of sending patches, please fork this project using the standard
     git and github infrastructure.

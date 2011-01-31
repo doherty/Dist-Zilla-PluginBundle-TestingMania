@@ -1,6 +1,10 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Removed ApacheTests
+ * Removed PodSpellingTests, which has a fail in the dependency chain, wasn't
+   enabled by default, and is too annoying to bear.
+ * Added PodLinkTests
 
 0.002     2010-11-28
  * Flesh out the chain of dependencies to get full functionality

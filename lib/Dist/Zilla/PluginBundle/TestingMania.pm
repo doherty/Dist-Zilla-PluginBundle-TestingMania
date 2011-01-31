@@ -24,15 +24,9 @@ are actually I<used> by default.
 
 =item *
 
-L<Dist::Zilla::Plugin::ApacheTest>, which builds a Makefile.PL that uses
-L<ExtUtils::MakeMaker> with L<Apache::Test>. This is not enabled by default;
-see L</"Adding tests">.
-
-=item *
-
 L<Dist::Zilla::Plugin::CheckChangesTests>, which checks your F<Changes> file
 for correctness. See L<Test::CheckChanges> for what that means. This is not
-enabled by default; see L</"Adding tests">.
+enabled by default; see L</"Adding Tests">.
 
 =item *
 
@@ -43,7 +37,7 @@ dist.
 
 L<Dist::Zilla::Plugin::ConsistentVersionTest>, which tests that all modules in
 the dist have the same version. See L<Test::ConsistentVersion> for details. This
-is not enabled by default; see L</"Adding tests">.
+is not enabled by default; see L</"Adding Tests">.
 
 =item *
 
@@ -95,8 +89,10 @@ for what that means.
 
 =item *
 
-L<Dist::Zilla::Plugin::PodSpellingTests>, which checks your L<Pod|perlpod> for
-correct spelling. This is not enabled by default; see L</"Adding tests">.
+L<Dist::Zilla::Plugin::PodLinkTests>, which tests links in your Pod for invalid
+links, or links which return a 404 (Not Found) error when you release your
+dist. Note that smokers won't check for 404s to save hammering the network.
+See L<Test::Pod::LinkCheck> and L<Test::Pod::No404s> for details.
 
 =item *
 
@@ -113,7 +109,7 @@ that means.
 
 L<Dist::Zilla::Plugin::ProgCriticTests>, which helps developers by gradually
 enforcing coding standards. See L<Test::Perl::Critic::Progressive> for what
-that means. This is not enabled by default; see L</"Adding tests">.
+that means. This is not enabled by default; see L</"Adding Tests">.
 
 =item *
 
@@ -127,14 +123,14 @@ variables. See L<Test::Vars> for details.
 
 =back
 
-=head2 Excluding rests
+=head2 Excluding Tests
 
 To exclude a testing plugin, give a comma-separated list in F<dist.ini>:
 
     [@TestingMania]
     skip = EOLTests,NoTabsTests
 
-=head2 Adding tests
+=head2 Adding Tests
 
 To add a testing plugin which is listed above, but not enabled by default,
 give a comma-separated list in F<dist.ini>:
@@ -153,7 +149,6 @@ sub configure {
     my $self = shift;
 
     my %plugins = (
-        ApacheTest              => 0, # Uncommonly needed
         CheckChangesTests       => 0, # Finnicky and annoying
         CompileTests            => 1,
         ConsistentVersionTest   => 0, # Finnicky and annoying
@@ -166,7 +161,7 @@ sub configure {
         MinimumVersionTests     => 1,
         NoTabsTests             => 1,
         PodCoverageTests        => 1,
-        PodSpellingTests        => 0, # Automated spelling tests are nerve-wracking
+        PodLinkTests            => 1,
         PodSyntaxTests          => 1,
         PortabilityTests        => 1,
         ProgCriticTests         => 0, # Quite personal
