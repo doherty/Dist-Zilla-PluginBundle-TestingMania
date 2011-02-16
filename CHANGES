@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Removed PodLinkTests; the dependencies are too immature
 
 0.003     2011-01-31
  * Removed ApacheTests

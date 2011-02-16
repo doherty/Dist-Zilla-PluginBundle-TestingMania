@@ -65,12 +65,6 @@ DESCRIPTION
         Pod documentation for the things you should have it for. See
         Test::Pod::Coverage for what that means.
 
-    *   Dist::Zilla::Plugin::PodLinkTests, which tests links in your Pod for
-        invalid links, or links which return a 404 (Not Found) error when
-        you release your dist. Note that smokers won't check for 404s to
-        save hammering the network. See Test::Pod::LinkCheck and
-        Test::Pod::No404s for details.
-
     *   Dist::Zilla::Plugin::PodSyntaxTests, which checks that your Pod is
         well-formed. See Test::Pod and perlpod for details.
 
