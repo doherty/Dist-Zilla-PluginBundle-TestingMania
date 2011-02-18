@@ -1,8 +1,9 @@
-use 5.0100; # We use the smart match operator
-use strict;
-use warnings;
 package Dist::Zilla::PluginBundle::TestingMania;
 # ABSTRACT: test your dist with every testing plugin conceivable
+use strict;
+use warnings;
+use 5.0100; # We use the smart match operator
+# VERSION
 
 =head1 DESCRIPTION
 
