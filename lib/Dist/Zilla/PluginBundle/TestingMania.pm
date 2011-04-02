@@ -126,6 +126,11 @@ from your SYNOPSIS section. See L<Test::Synopsis> for details and limitations.
 L<Dist::Zilla::Plugin::UnusedVarsTests>, which checks your dist for unused
 variables. See L<Test::Vars> for details.
 
+=item *
+
+L<Dist::Zilla::Plugin::ChangesTests>, which checks your changelog for conformance
+with L<CPAN::Changes::Spec>. See L<Test::CPAN::Changes> for details.
+
 =back
 
 =head2 Excluding Tests
@@ -154,6 +159,7 @@ sub configure {
     my $self = shift;
 
     my %plugins = (
+        ChangesTests            => 1,
         CheckChangesTests       => 0, # Finnicky and annoying
         CompileTests            => 1,
         ConsistentVersionTest   => 0, # Finnicky and annoying
@@ -182,6 +188,11 @@ sub configure {
             $plugin ~~ @include or  # plugins we already included
             !$plugins{$plugin}      # plugins in the list, but which we don't want to add
         );
+        if ($plugin eq 'ChangesTests') {
+            push(@include, [ $plugin => { changelog => $self->payload->{changelog} } ])
+                unless $plugin ~~ @include or $plugin ~~ @skip;
+            next SKIP;
+        }
         push(@include, $plugin);
     }
 
@@ -198,10 +209,4 @@ __PACKAGE__->meta->make_immutable();
 
 no Moose;
 
-1;
-
-=begin Pod::Coverage
-
-configure
-
-=end Pod::Coverage
+=for Pod::Coverage configure
