@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.005
+    version 0.006
 
 DESCRIPTION
     This plugin bundle collects all the testing plugins for Dist::Zilla

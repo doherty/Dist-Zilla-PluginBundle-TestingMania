@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
   'NAME' => 'Dist::Zilla::PluginBundle::TestingMania',
   'PREREQ_PM' => {
     'Dist::Zilla::Plugin::CheckChangesTests' => '1.100900',
-    'Dist::Zilla::Plugin::CompileTests' => '1.110870',
+    'Dist::Zilla::Plugin::CompileTests' => '1.110930',
     'Dist::Zilla::Plugin::ConsistentVersionTest' => '0.02',
     'Dist::Zilla::Plugin::CriticTests' => '1.102280',
     'Dist::Zilla::Plugin::DistManifestTests' => '1.101420',
@@ -42,12 +42,12 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::SynopsisTests' => '1.101420',
     'Dist::Zilla::Plugin::UnusedVarsTests' => '1.100860',
     'Dist::Zilla::Role::PluginBundle::Easy' => '4.200004',
-    'Moose' => '1.24',
+    'Moose' => '1.25',
     'Pod::Coverage::TrustPod' => '0.092832',
     'Test::CPAN::Meta' => '0.18',
     'Test::Perl::Critic' => '1.02'
   },
-  'VERSION' => '0.005',
+  'VERSION' => '0.006',
   'test' => {
     'TESTS' => 't/*.t'
   }
