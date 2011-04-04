@@ -189,7 +189,7 @@ sub configure {
             !$plugins{$plugin}      # plugins in the list, but which we don't want to add
         );
         if ($plugin eq 'ChangesTests') {
-            push(@include, [ $plugin => { changelog => $self->payload->{changelog} } ])
+            push(@include, [ $plugin => { changelog => ($self->payload->{changelog} || 'Changes') } ])
                 unless $plugin ~~ @include or $plugin ~~ @skip;
             next SKIP;
         }

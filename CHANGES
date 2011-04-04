@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Set default changelog; thanks to mjgardner
 
 0.005     2011-04-02
  * Added ChangesTests
