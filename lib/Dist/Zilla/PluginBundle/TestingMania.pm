@@ -5,6 +5,25 @@ use warnings;
 use 5.0100; # We use the smart match operator
 # VERSION
 
+use Dist::Zilla::Plugin::Test::CPAN::Changes    qw();
+use Dist::Zilla::Plugin::CheckChangesTests      qw();
+use Dist::Zilla::Plugin::CompileTests           qw();
+use Dist::Zilla::Plugin::ConsistentVersionTest  qw();
+use Dist::Zilla::Plugin::CriticTests            qw();
+use Dist::Zilla::Plugin::DistManifestTests      qw();
+use Dist::Zilla::Plugin::EOLTests               qw();
+use Dist::Zilla::Plugin::HasVersionTests        qw();
+use Dist::Zilla::Plugin::KwaliteeTests          qw();
+use Dist::Zilla::Plugin::MetaTests              qw();
+use Dist::Zilla::Plugin::MinimumVersionTests    qw();
+use Dist::Zilla::Plugin::NoTabsTests            qw();
+use Dist::Zilla::Plugin::PodCoverageTests       qw();
+use Dist::Zilla::Plugin::PodSyntaxTests         qw();
+use Dist::Zilla::Plugin::PortabilityTests       qw();
+use Dist::Zilla::Plugin::ProgCriticTests        qw();
+use Dist::Zilla::Plugin::SynopsisTests          qw();
+use Dist::Zilla::Plugin::UnusedVarsTests        qw();
+
 =head1 DESCRIPTION
 
 This plugin bundle collects all the testing plugins for L<Dist::Zilla> which
@@ -128,7 +147,7 @@ variables. See L<Test::Vars> for details.
 
 =item *
 
-L<Dist::Zilla::Plugin::ChangesTests>, which checks your changelog for conformance
+L<Dist::Zilla::Plugin::Test::CPAN::Changes>, which checks your changelog for conformance
 with L<CPAN::Changes::Spec>. See L<Test::CPAN::Changes> for details.
 
 =back
@@ -159,7 +178,7 @@ sub configure {
     my $self = shift;
 
     my %plugins = (
-        ChangesTests            => 1,
+        'Test::CPAN::Changes'   => 1,
         CheckChangesTests       => 0, # Finnicky and annoying
         CompileTests            => 1,
         ConsistentVersionTest   => 0, # Finnicky and annoying
@@ -188,7 +207,7 @@ sub configure {
             $plugin ~~ @include or  # plugins we already included
             !$plugins{$plugin}      # plugins in the list, but which we don't want to add
         );
-        if ($plugin eq 'ChangesTests') {
+        if ($plugin eq 'Test::CPAN::Changes') {
             push(@include, [ $plugin => { changelog => ($self->payload->{changelog} || 'Changes') } ])
                 unless $plugin ~~ @include or $plugin ~~ @skip;
             next SKIP;

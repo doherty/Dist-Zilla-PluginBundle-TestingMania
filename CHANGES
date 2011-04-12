@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * New prereq names
 
 0.006     2011-04-04
  * Set default changelog; thanks to mjgardner
