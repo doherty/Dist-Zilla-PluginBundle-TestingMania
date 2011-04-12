@@ -40,14 +40,15 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::PortabilityTests' => '1.101420',
     'Dist::Zilla::Plugin::ProgCriticTests' => '1.102520',
     'Dist::Zilla::Plugin::SynopsisTests' => '1.101420',
+    'Dist::Zilla::Plugin::Test::CPAN::Changes' => '0',
     'Dist::Zilla::Plugin::UnusedVarsTests' => '1.100860',
     'Dist::Zilla::Role::PluginBundle::Easy' => '4.200004',
     'Moose' => '1.25',
-    'Pod::Coverage::TrustPod' => '0.092832',
+    'Pod::Coverage::TrustPod' => '0.100000',
     'Test::CPAN::Meta' => '0.18',
     'Test::Perl::Critic' => '1.02'
   },
-  'VERSION' => '0.006',
+  'VERSION' => '0.007',
   'test' => {
     'TESTS' => 't/*.t'
   }

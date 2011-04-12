@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.006
+    version 0.007
 
 DESCRIPTION
     This plugin bundle collects all the testing plugins for Dist::Zilla
@@ -84,9 +84,9 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::UnusedVarsTests, which checks your dist for
         unused variables. See Test::Vars for details.
 
-    *   Dist::Zilla::Plugin::ChangesTests, which checks your changelog for
-        conformance with CPAN::Changes::Spec. See Test::CPAN::Changes for
-        details.
+    *   Dist::Zilla::Plugin::Test::CPAN::Changes, which checks your
+        changelog for conformance with CPAN::Changes::Spec. See
+        Test::CPAN::Changes for details.
 
   Excluding Tests
     To exclude a testing plugin, give a comma-separated list in dist.ini:
