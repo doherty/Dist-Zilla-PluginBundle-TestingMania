@@ -61,18 +61,18 @@ is not enabled by default; see L</"Enabling Tests">.
 
 =item *
 
-L<Dist::Zilla::Plugin::CriticTests>, which checks your code against best practices.
-See L<Perl::Critic> for details.
+L<Dist::Zilla::Plugin::CriticTests>, which checks your code against best
+practices. See L<Perl::Critic> for details.
 
 =item *
 
-L<Dist::Zilla::Plugin::DistManifestTests>, which tests F<MANIFEST> for correctness.
-See L<Test::DistManifest> for details.
+L<Dist::Zilla::Plugin::DistManifestTests>, which tests F<MANIFEST> for
+correctness. See L<Test::DistManifest> for details.
 
 =item *
 
-L<Dist::Zilla::Plugin::EOLTests>, which ensures the correct line endings are used
-(and also checks for trailing whitespace). See L<Test::EOL> for details.
+L<Dist::Zilla::Plugin::EOLTests>, which ensures the correct line endings are
+used (and also checks for trailing whitespace). See L<Test::EOL> for details.
 
 =item *
 
@@ -82,30 +82,32 @@ numbers. See L<Test::HasVersion> for what that means.
 =item *
 
 L<Dist::Zilla::Plugin::KwaliteeTests>, which performs some basic kwalitee checks.
-I<Kwalitee> is an automatically-measurable guage of how good your software is. It
-bears only a B<superficial> resemblance to the human-measurable guage of actual
-quality. See L<Test::Kwalitee> for a description of the tests.
+I<Kwalitee> is an automatically-measurable guage of how good your software is.
+It bears only a B<superficial> resemblance to the human-measurable guage of
+actual quality. See L<Test::Kwalitee> for a description of the tests.
 
 =item *
 
-L<Dist::Zilla::Plugin::MetaTests>, which performs some extra tests on F<META.yml>.
-See L<Test::CPAN::Meta> for what that means.
+L<Dist::Zilla::Plugin::MetaTests>, which performs some extra tests on
+F<META.yml>. See L<Test::CPAN::Meta> for what that means.
 
 =item *
 
 L<Dist::Zilla::Plugin::Test::CPAN::Meta::JSON>, which performs some extra tests
-on F<META.json>, if it exists. See L<Test::CPAN::Meta::JSON> for what that means.
+on F<META.json>, if it exists. See L<Test::CPAN::Meta::JSON> for what that
+means.
 
 =item *
 
-L<Dist::Zilla::Plugin::MinimumVersionTests>, which tests for the minimum required
-version of perl. See L<Test::MinimumVersion> for details, including limitations.
+L<Dist::Zilla::Plugin::MinimumVersionTests>, which tests for the minimum
+required version of perl. See L<Test::MinimumVersion> for details, including
+limitations.
 
 =item *
 
-L<Dist::Zilla::Plugin::NoTabsTests>, which ensures you don't use I<The Evil Character>.
-See L<Test::NoTabs> for details. If you wish to exclude this plugin, see
-L</"Disabling Tests">.
+L<Dist::Zilla::Plugin::NoTabsTests>, which ensures you don't use I<The Evil
+Character>. See L<Test::NoTabs> for details. If you wish to exclude this plugin,
+see L</"Disabling Tests">.
 
 =item *
 
@@ -115,8 +117,8 @@ for what that means.
 
 =item *
 
-L<Dist::Zilla::Plugin::PodSyntaxTests>, which checks that your Pod is well-formed.
-See L<Test::Pod> and L<perlpod> for details.
+L<Dist::Zilla::Plugin::PodSyntaxTests>, which checks that your Pod is
+well-formed. See L<Test::Pod> and L<perlpod> for details.
 
 =item *
 
