@@ -175,17 +175,17 @@ sub configure {
     my $self = shift;
 
     my %plugins = (
-        'Test::CPAN::Changes'   => { changelog => ($self->payload->{changelog} || 'Changes') },
-        'Test::CPAN::Meta::JSON'=> 1,
+        'Test::CPAN::Changes'   => $self->config_slice('changelog'),
+        'Test::CPAN::Meta::JSON'=> 1, # should only be loaded if MetaJSON is loaded, or the file exists in the dist
         'Test::Pod::LinkCheck'  => 1,
         CompileTests            => 1,
-        ConsistentVersionTest   => 0,
+        ConsistentVersionTest   => 0, # finnicky and annoying
         CriticTests             => 1,
         DistManifestTests       => 1,
         EOLTests                => 1,
         HasVersionTests         => 1,
         KwaliteeTests           => 1,
-        MetaTests               => 1,
+        MetaTests               => 1, # should only be loaded if MetaYAML is loaded, or the file exists in the dist
         MinimumVersionTests     => 1,
         NoTabsTests             => 1,
         PodCoverageTests        => 1,
@@ -196,9 +196,11 @@ sub configure {
     );
     my @include = ();
 
-    my @disable = $self->payload->{skip} ? split(/, ?/, $self->payload->{disable}) : ();
+    my @disable = $self->payload->{skip}
+        ? split(/, ?/, $self->payload->{disable})
+        : ();
     foreach my $plugin (keys %plugins) {
-        next if (              # Skip...
+        next if (                   # Skip...
             $plugin ~~ @disable or  # plugins they asked to skip
             $plugin ~~ @include or  # plugins we already included
             !$plugins{$plugin}      # plugins in the list, but which we don't want to add
@@ -208,7 +210,9 @@ sub configure {
             : $plugin);
     }
 
-    my @enable = $self->payload->{enable} ? split(/, ?/, $self->payload->{enable}) : ();
+    my @enable = $self->payload->{enable}
+        ? split(/, ?/, $self->payload->{enable})
+        : ();
     foreach my $plugin (@enable) {
         next unless $plugin ~~ %plugins; # Skip the plugin unless it is in the list of actual testing plugins
         push(@include, $plugin) unless ($plugin ~~ @include or $plugin ~~ @disable);
