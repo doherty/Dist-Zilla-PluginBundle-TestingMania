@@ -2,11 +2,10 @@ package Dist::Zilla::PluginBundle::TestingMania;
 # ABSTRACT: test your dist with every testing plugin conceivable
 use strict;
 use warnings;
-use 5.0100; # We use the smart match operator
+use 5.010001; # We use the smart match operator
 # VERSION
 
 use Dist::Zilla::Plugin::Test::CPAN::Changes    qw();
-use Dist::Zilla::Plugin::CheckChangesTests      qw();
 use Dist::Zilla::Plugin::CompileTests           qw();
 use Dist::Zilla::Plugin::ConsistentVersionTest  qw();
 use Dist::Zilla::Plugin::CriticTests            qw();
@@ -20,9 +19,10 @@ use Dist::Zilla::Plugin::NoTabsTests            qw();
 use Dist::Zilla::Plugin::PodCoverageTests       qw();
 use Dist::Zilla::Plugin::PodSyntaxTests         qw();
 use Dist::Zilla::Plugin::PortabilityTests       qw();
-use Dist::Zilla::Plugin::ProgCriticTests        qw();
 use Dist::Zilla::Plugin::SynopsisTests          qw();
 use Dist::Zilla::Plugin::UnusedVarsTests        qw();
+use Dist::Zilla::Plugin::Test::Pod::LinkCheck   qw();
+use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON qw();
 
 =head1 DESCRIPTION
 
@@ -41,12 +41,6 @@ are actually I<used> by default.
 =head2 Testing plugins
 
 =over 4
-
-=item *
-
-L<Dist::Zilla::Plugin::CheckChangesTests>, which checks your F<Changes> file
-for correctness. See L<Test::CheckChanges> for what that means. This is not
-enabled by default; see L</"Adding Tests">.
 
 =item *
 
@@ -93,6 +87,11 @@ See L<Test::CPAN::Meta> for what that means.
 
 =item *
 
+L<Dist::Zilla::Plugin::Test::CPAN::Meta::JSON>, which performs some extra tests
+on F<META.json>, if it exists. See L<Test::CPAN::Meta::JSON> for what that means.
+
+=item *
+
 L<Dist::Zilla::Plugin::MinimumVersionTests>, which tests for the minimum required
 version of perl. See L<Test::MinimumVersion> for details, including limitations.
 
@@ -131,12 +130,6 @@ that means.
 
 =item *
 
-L<Dist::Zilla::Plugin::ProgCriticTests>, which helps developers by gradually
-enforcing coding standards. See L<Test::Perl::Critic::Progressive> for what
-that means. This is not enabled by default; see L</"Adding Tests">.
-
-=item *
-
 L<Dist::Zilla::Plugin::SynopsisTests>, which does syntax checking on the code
 from your SYNOPSIS section. See L<Test::Synopsis> for details and limitations.
 
@@ -147,8 +140,13 @@ variables. See L<Test::Vars> for details.
 
 =item *
 
-L<Dist::Zilla::Plugin::Test::CPAN::Changes>, which checks your changelog for conformance
-with L<CPAN::Changes::Spec>. See L<Test::CPAN::Changes> for details.
+L<Dist::Zilla::Plugin::Test::CPAN::Changes>, which checks your changelog for
+conformance with L<CPAN::Changes::Spec>. See L<Test::CPAN::Changes> for details.
+
+Set C<changelog> in F<dist.ini> if you don't use F<Changes>:
+
+    [@TestingMania]
+    changelog = CHANGELOG
 
 =back
 
@@ -161,13 +159,16 @@ To exclude a testing plugin, give a comma-separated list in F<dist.ini>:
 
 =head2 Adding Tests
 
-To add a testing plugin which is listed above, but not enabled by default,
-give a comma-separated list in F<dist.ini>:
+This pluginbundle may have prerequisites for some testing plugins that aren't
+enabled by default. This option allows you to turn them on. Attempting to add
+plugins which are not listed above will have I<no effect>.
+
+To enable a testing plugin, give a comma-separated list in F<dist.ini>:
 
     [@TestingMania]
     add = ApacheTest,PodSpellingTests
 
-Attempting to add plugins which are not listed above will have no effect.
+Currently there are no plugins which aren't enabled by default.
 
 =cut
 
@@ -178,10 +179,11 @@ sub configure {
     my $self = shift;
 
     my %plugins = (
-        'Test::CPAN::Changes'   => 1,
-        CheckChangesTests       => 0, # Finnicky and annoying
+        'Test::CPAN::Changes'   => { changelog => ($self->payload->{changelog} || 'Changes') },
+        'Test::CPAN::Meta::JSON'=> 1,
+        'Test::Pod::LinkCheck'  => 1,
         CompileTests            => 1,
-        ConsistentVersionTest   => 0, # Finnicky and annoying
+        ConsistentVersionTest   => 1,
         CriticTests             => 1,
         DistManifestTests       => 1,
         EOLTests                => 1,
@@ -191,10 +193,8 @@ sub configure {
         MinimumVersionTests     => 1,
         NoTabsTests             => 1,
         PodCoverageTests        => 1,
-        # PodLinkTests            => 1, # Too broken to include
         PodSyntaxTests          => 1,
         PortabilityTests        => 1,
-        ProgCriticTests         => 0, # Quite personal
         SynopsisTests           => 1,
         UnusedVarsTests         => 1,
     );
@@ -207,12 +207,9 @@ sub configure {
             $plugin ~~ @include or  # plugins we already included
             !$plugins{$plugin}      # plugins in the list, but which we don't want to add
         );
-        if ($plugin eq 'Test::CPAN::Changes') {
-            push(@include, [ $plugin => { changelog => ($self->payload->{changelog} || 'Changes') } ])
-                unless $plugin ~~ @include or $plugin ~~ @skip;
-            next SKIP;
-        }
-        push(@include, $plugin);
+        push(@include, ref $plugins{$plugin}
+            ? [ $plugin => $plugins{$plugin} ]
+            : $plugin);
     }
 
     my @add = $self->payload->{add} ? split(/, ?/, $self->payload->{add}) : ();
