@@ -8,9 +8,9 @@ use 5.010001; # We use the smart match operator
 use Dist::Zilla::Plugin::Test::CPAN::Changes    qw();
 use Dist::Zilla::Plugin::CompileTests           qw();
 use Dist::Zilla::Plugin::ConsistentVersionTest  qw();
-use Dist::Zilla::Plugin::CriticTests            qw();
+use Dist::Zilla::Plugin::CriticTests 1.102280   qw();
 use Dist::Zilla::Plugin::DistManifestTests      qw();
-use Dist::Zilla::Plugin::EOLTests               qw();
+use Dist::Zilla::Plugin::EOLTests 0.02          qw();
 use Dist::Zilla::Plugin::HasVersionTests        qw();
 use Dist::Zilla::Plugin::KwaliteeTests          qw();
 use Dist::Zilla::Plugin::MetaTests              qw();

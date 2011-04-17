@@ -7,6 +7,7 @@ Changelog for Dist::Zilla::PluginBundle::TestingMania
  * Removed ProgCriticTests (was disabled by default)
  * Removed CheckChangesTests
  * Documentation improvements
+ * Don't require the absolute latest prerequisites
 
 0.007     2011-04-12
  * New prereq names
