@@ -57,7 +57,7 @@ dist.
 
 L<Dist::Zilla::Plugin::ConsistentVersionTest>, which tests that all modules in
 the dist have the same version. See L<Test::ConsistentVersion> for details. This
-is not enabled by default; see L</"Adding Tests">.
+is not enabled by default; see L</"Enabling Tests">.
 
 =item *
 
@@ -104,24 +104,14 @@ version of perl. See L<Test::MinimumVersion> for details, including limitations.
 =item *
 
 L<Dist::Zilla::Plugin::NoTabsTests>, which ensures you don't use I<The Evil Character>.
-See L<Test::NoTabs> for details. If you wish to exclude this plugin, see L</"Excluding Tests">.
+See L<Test::NoTabs> for details. If you wish to exclude this plugin, see
+L</"Disabling Tests">.
 
 =item *
 
 L<Dist::Zilla::Plugin::PodCoverageTests>, which checks that you have Pod
 documentation for the things you should have it for. See L<Test::Pod::Coverage>
 for what that means.
-
-=begin hide
-
-=item *
-
-L<Dist::Zilla::Plugin::PodLinkTests>, which tests links in your Pod for invalid
-links, or links which return a 404 (Not Found) error when you release your
-dist. Note that smokers won't check for 404s to save hammering the network.
-See L<Test::Pod::LinkCheck> and L<Test::Pod::No404s> for details.
-
-=end hide
 
 =item *
 
@@ -156,14 +146,14 @@ Set C<changelog> in F<dist.ini> if you don't use F<Changes>:
 
 =back
 
-=head2 Excluding Tests
+=head2 Disabling Tests
 
 To exclude a testing plugin, give a comma-separated list in F<dist.ini>:
 
     [@TestingMania]
-    skip = EOLTests,NoTabsTests
+    disable = EOLTests,NoTabsTests
 
-=head2 Adding Tests
+=head2 Enabling Tests
 
 This pluginbundle may have depend on some testing plugins that aren't
 enabled by default. This option allows you to turn them on. Attempting to add
@@ -172,7 +162,7 @@ plugins which are not listed above will have I<no effect>.
 To enable a testing plugin, give a comma-separated list in F<dist.ini>:
 
     [@TestingMania]
-    add = ConsistentVersionTest
+    enable = ConsistentVersionTest
 
 =cut
 
@@ -204,10 +194,10 @@ sub configure {
     );
     my @include = ();
 
-    my @skip = $self->payload->{skip} ? split(/, ?/, $self->payload->{skip}) : ();
-    SKIP: foreach my $plugin (keys %plugins) {
-        next SKIP if (              # Skip...
-            $plugin ~~ @skip or     # plugins they asked to skip
+    my @disable = $self->payload->{skip} ? split(/, ?/, $self->payload->{disable}) : ();
+    foreach my $plugin (keys %plugins) {
+        next if (              # Skip...
+            $plugin ~~ @disable or  # plugins they asked to skip
             $plugin ~~ @include or  # plugins we already included
             !$plugins{$plugin}      # plugins in the list, but which we don't want to add
         );
@@ -216,10 +206,10 @@ sub configure {
             : $plugin);
     }
 
-    my @add = $self->payload->{add} ? split(/, ?/, $self->payload->{add}) : ();
-    ADD: foreach my $plugin (@add) {
-        next ADD unless $plugin ~~ %plugins; # Skip the plugin unless it is in the list of actual testing plugins
-        push(@include, $plugin) unless ($plugin ~~ @include or $plugin ~~ @skip);
+    my @enable = $self->payload->{enable} ? split(/, ?/, $self->payload->{enable}) : ();
+    foreach my $plugin (@enable) {
+        next unless $plugin ~~ %plugins; # Skip the plugin unless it is in the list of actual testing plugins
+        push(@include, $plugin) unless ($plugin ~~ @include or $plugin ~~ @disable);
     }
 
     $self->add_plugins(@include);
