@@ -24,6 +24,12 @@ use Dist::Zilla::Plugin::UnusedVarsTests        qw();
 use Dist::Zilla::Plugin::Test::Pod::LinkCheck   qw();
 use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON qw();
 
+=head1 SYNOPSIS
+
+In F<dist.ini>:
+
+    [@TestingMania]
+
 =head1 DESCRIPTION
 
 This plugin bundle collects all the testing plugins for L<Dist::Zilla> which
@@ -159,16 +165,14 @@ To exclude a testing plugin, give a comma-separated list in F<dist.ini>:
 
 =head2 Adding Tests
 
-This pluginbundle may have prerequisites for some testing plugins that aren't
+This pluginbundle may have depend on some testing plugins that aren't
 enabled by default. This option allows you to turn them on. Attempting to add
 plugins which are not listed above will have I<no effect>.
 
 To enable a testing plugin, give a comma-separated list in F<dist.ini>:
 
     [@TestingMania]
-    add = ApacheTest,PodSpellingTests
-
-Currently there are no plugins which aren't enabled by default.
+    add = ConsistentVersionTest
 
 =cut
 
@@ -183,7 +187,7 @@ sub configure {
         'Test::CPAN::Meta::JSON'=> 1,
         'Test::Pod::LinkCheck'  => 1,
         CompileTests            => 1,
-        ConsistentVersionTest   => 1,
+        ConsistentVersionTest   => 0,
         CriticTests             => 1,
         DistManifestTests       => 1,
         EOLTests                => 1,
@@ -226,3 +230,7 @@ __PACKAGE__->meta->make_immutable();
 no Moose;
 
 =for Pod::Coverage configure
+
+=for test_synopsis
+1;
+__END__
