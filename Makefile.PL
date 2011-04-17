@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-BEGIN { require 5.0100; }
+BEGIN { require 5.010001; }
 
 use ExtUtils::MakeMaker 6.31;
 
@@ -12,7 +12,7 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'test your dist with every testing plugin conceivable',
   'AUTHOR' => 'Mike Doherty <doherty@cpan.org>',
   'BUILD_REQUIRES' => {
-    'File::Find' => '0',
+    'File::Find' => '1.19',
     'File::Temp' => '0.22',
     'Test::More' => '0.98'
   },
@@ -24,7 +24,6 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'Dist::Zilla::PluginBundle::TestingMania',
   'PREREQ_PM' => {
-    'Dist::Zilla::Plugin::CheckChangesTests' => '1.100900',
     'Dist::Zilla::Plugin::CompileTests' => '1.110930',
     'Dist::Zilla::Plugin::ConsistentVersionTest' => '0.02',
     'Dist::Zilla::Plugin::CriticTests' => '1.102280',
@@ -38,17 +37,18 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::PodCoverageTests' => '4.200004',
     'Dist::Zilla::Plugin::PodSyntaxTests' => '4.200004',
     'Dist::Zilla::Plugin::PortabilityTests' => '1.101420',
-    'Dist::Zilla::Plugin::ProgCriticTests' => '1.102520',
     'Dist::Zilla::Plugin::SynopsisTests' => '1.101420',
-    'Dist::Zilla::Plugin::Test::CPAN::Changes' => '0',
+    'Dist::Zilla::Plugin::Test::CPAN::Changes' => '0.003',
+    'Dist::Zilla::Plugin::Test::CPAN::Meta::JSON' => '0',
+    'Dist::Zilla::Plugin::Test::Pod::LinkCheck' => '1.000',
     'Dist::Zilla::Plugin::UnusedVarsTests' => '1.100860',
     'Dist::Zilla::Role::PluginBundle::Easy' => '4.200004',
-    'Moose' => '1.25',
+    'Moose' => '2.0000',
     'Pod::Coverage::TrustPod' => '0.100000',
     'Test::CPAN::Meta' => '0.18',
     'Test::Perl::Critic' => '1.02'
   },
-  'VERSION' => '0.007',
+  'VERSION' => '0.008',
   'test' => {
     'TESTS' => 't/*.t'
   }

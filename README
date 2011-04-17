@@ -3,7 +3,12 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.007
+    version 0.008
+
+SYNOPSIS
+    In dist.ini:
+
+        [@TestingMania]
 
 DESCRIPTION
     This plugin bundle collects all the testing plugins for Dist::Zilla
@@ -19,10 +24,6 @@ DESCRIPTION
     plugins are actually *used* by default.
 
   Testing plugins
-    *   Dist::Zilla::Plugin::CheckChangesTests, which checks your Changes
-        file for correctness. See Test::CheckChanges for what that means.
-        This is not enabled by default; see "Adding Tests".
-
     *   Dist::Zilla::Plugin::CompileTests, which performs tests to syntax
         check your dist.
 
@@ -53,6 +54,10 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::MetaTests, which performs some extra tests on
         META.yml. See Test::CPAN::Meta for what that means.
 
+    *   Dist::Zilla::Plugin::Test::CPAN::Meta::JSON, which performs some
+        extra tests on META.json, if it exists. See Test::CPAN::Meta::JSON
+        for what that means.
+
     *   Dist::Zilla::Plugin::MinimumVersionTests, which tests for the
         minimum required version of perl. See Test::MinimumVersion for
         details, including limitations.
@@ -72,11 +77,6 @@ DESCRIPTION
         tests to ensure portability of file names. See
         Test::Portability::Files for what that means.
 
-    *   Dist::Zilla::Plugin::ProgCriticTests, which helps developers by
-        gradually enforcing coding standards. See
-        Test::Perl::Critic::Progressive for what that means. This is not
-        enabled by default; see "Adding Tests".
-
     *   Dist::Zilla::Plugin::SynopsisTests, which does syntax checking on
         the code from your SYNOPSIS section. See Test::Synopsis for details
         and limitations.
@@ -88,6 +88,11 @@ DESCRIPTION
         changelog for conformance with CPAN::Changes::Spec. See
         Test::CPAN::Changes for details.
 
+        Set "changelog" in dist.ini if you don't use Changes:
+
+            [@TestingMania]
+            changelog = CHANGELOG
+
   Excluding Tests
     To exclude a testing plugin, give a comma-separated list in dist.ini:
 
@@ -95,16 +100,19 @@ DESCRIPTION
         skip = EOLTests,NoTabsTests
 
   Adding Tests
-    To add a testing plugin which is listed above, but not enabled by
-    default, give a comma-separated list in dist.ini:
+    This pluginbundle may have depend on some testing plugins that aren't
+    enabled by default. This option allows you to turn them on. Attempting
+    to add plugins which are not listed above will have *no effect*.
+
+    To enable a testing plugin, give a comma-separated list in dist.ini:
 
         [@TestingMania]
-        add = ApacheTest,PodSpellingTests
-
-    Attempting to add plugins which are not listed above will have no
-    effect.
+        add = ConsistentVersionTest
 
 AVAILABILITY
+    The project homepage is
+    <http://p3rl.org/Dist::Zilla::PluginBundle::TestingMania>.
+
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see

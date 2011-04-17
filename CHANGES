@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.008     2011-04-16
  * Include a test for META.json - disable it if your dists don't include this
  * Removed ProgCriticTests (was disabled by default)
  * Removed CheckChangesTests
