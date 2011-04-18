@@ -5,24 +5,24 @@ use warnings;
 use 5.010001; # We use the smart match operator
 # VERSION
 
-use Dist::Zilla::Plugin::Test::CPAN::Changes    qw();
-use Dist::Zilla::Plugin::CompileTests           qw();
-use Dist::Zilla::Plugin::ConsistentVersionTest  qw();
-use Dist::Zilla::Plugin::CriticTests 1.102280   qw();
-use Dist::Zilla::Plugin::DistManifestTests      qw();
-use Dist::Zilla::Plugin::EOLTests 0.02          qw();
-use Dist::Zilla::Plugin::HasVersionTests        qw();
-use Dist::Zilla::Plugin::KwaliteeTests          qw();
-use Dist::Zilla::Plugin::MetaTests              qw();
-use Dist::Zilla::Plugin::MinimumVersionTests    qw();
-use Dist::Zilla::Plugin::NoTabsTests            qw();
-use Dist::Zilla::Plugin::PodCoverageTests       qw();
-use Dist::Zilla::Plugin::PodSyntaxTests         qw();
-use Dist::Zilla::Plugin::PortabilityTests       qw();
-use Dist::Zilla::Plugin::SynopsisTests          qw();
-use Dist::Zilla::Plugin::UnusedVarsTests        qw();
-use Dist::Zilla::Plugin::Test::Pod::LinkCheck   qw();
-use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON qw();
+use Dist::Zilla::Plugin::Test::CPAN::Changes            qw();
+use Dist::Zilla::Plugin::CompileTests                   qw();
+use Dist::Zilla::Plugin::ConsistentVersionTest          qw();
+use Dist::Zilla::Plugin::CriticTests 1.102280           qw();
+use Dist::Zilla::Plugin::DistManifestTests              qw();
+use Dist::Zilla::Plugin::EOLTests 0.02                  qw(); # Also checks for trailing whitespace
+use Dist::Zilla::Plugin::HasVersionTests                qw();
+use Dist::Zilla::Plugin::KwaliteeTests                  qw();
+use Dist::Zilla::Plugin::MetaTests                      qw();
+use Dist::Zilla::Plugin::MinimumVersionTests            qw();
+use Dist::Zilla::Plugin::NoTabsTests                    qw();
+use Dist::Zilla::Plugin::PodCoverageTests               qw();
+use Dist::Zilla::Plugin::PodSyntaxTests                 qw();
+use Dist::Zilla::Plugin::PortabilityTests               qw();
+use Dist::Zilla::Plugin::SynopsisTests                  qw();
+use Dist::Zilla::Plugin::UnusedVarsTests                qw();
+use Dist::Zilla::Plugin::Test::Pod::LinkCheck           qw();
+use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON 0.002   qw(); # Prunes itself when META.json isn't present
 
 =head1 SYNOPSIS
 
@@ -176,7 +176,7 @@ sub configure {
 
     my %plugins = (
         'Test::CPAN::Changes'   => $self->config_slice('changelog'),
-        'Test::CPAN::Meta::JSON'=> 1, # should only be loaded if MetaJSON is loaded, or the file exists in the dist
+        'Test::CPAN::Meta::JSON'=> 1, # prunes itself if META.json isn't there
         'Test::Pod::LinkCheck'  => 1,
         CompileTests            => 1,
         ConsistentVersionTest   => 0, # finnicky and annoying

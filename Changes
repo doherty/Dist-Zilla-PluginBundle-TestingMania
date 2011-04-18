@@ -1,14 +1,17 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Renamed options for clarity: add -> enable; skip -> disable
+ * Don't require the absolute latest prerequisites
+ * Require a version of the Test::CPAN::Meta::JSON plugin that prunes itself
+   when META.json isn't present. Users no longer need to disable this test
+   in that situation.
 
 0.008     2011-04-16
  * Include a test for META.json - disable it if your dists don't include this
  * Removed ProgCriticTests (was disabled by default)
  * Removed CheckChangesTests
  * Documentation improvements
- * Renamed options for clarity: add -> enable; skip -> disable
- * Don't require the absolute latest prerequisites
 
 0.007     2011-04-12
  * New prereq names
