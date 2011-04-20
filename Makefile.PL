@@ -13,8 +13,12 @@ my %WriteMakefileArgs = (
   'AUTHOR' => 'Mike Doherty <doherty@cpan.org>',
   'BUILD_REQUIRES' => {
     'File::Find' => '0',
+    'File::Path' => '0',
     'File::Temp' => '0',
-    'Test::More' => '0'
+    'Moose::Autobox' => '0',
+    'Test::DZil' => '0',
+    'Test::More' => '0.88',
+    'autodie' => '0'
   },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
@@ -48,7 +52,7 @@ my %WriteMakefileArgs = (
     'Test::CPAN::Meta' => '0',
     'Test::Perl::Critic' => '0'
   },
-  'VERSION' => '0.009',
+  'VERSION' => '0.010',
   'test' => {
     'TESTS' => 't/*.t'
   }
