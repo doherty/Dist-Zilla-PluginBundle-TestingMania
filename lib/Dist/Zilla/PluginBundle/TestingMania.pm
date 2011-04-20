@@ -22,7 +22,7 @@ use Dist::Zilla::Plugin::PortabilityTests               qw();
 use Dist::Zilla::Plugin::SynopsisTests                  qw();
 use Dist::Zilla::Plugin::UnusedVarsTests                qw();
 use Dist::Zilla::Plugin::Test::Pod::LinkCheck           qw();
-use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON 0.002   qw(); # Prunes itself when META.json isn't present
+use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON 0.003   qw(); # Prunes itself when META.json isn't present
 
 =head1 SYNOPSIS
 
