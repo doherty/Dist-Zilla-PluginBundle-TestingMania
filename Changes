@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Forgotten hash key renamed [rstauner]
 
 0.009     2011-04-19
  * Renamed options for clarity: add -> enable; skip -> disable
