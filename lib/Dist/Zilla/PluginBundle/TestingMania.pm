@@ -196,7 +196,7 @@ sub configure {
     );
     my @include = ();
 
-    my @disable = $self->payload->{skip}
+    my @disable = $self->payload->{disable}
         ? split(/, ?/, $self->payload->{disable})
         : ();
     foreach my $plugin (keys %plugins) {
