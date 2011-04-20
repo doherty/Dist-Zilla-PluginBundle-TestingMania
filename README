@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.008
+    version 0.009
 
 SYNOPSIS
     In dist.ini:
@@ -30,7 +30,7 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::ConsistentVersionTest, which tests that all
         modules in the dist have the same version. See
         Test::ConsistentVersion for details. This is not enabled by default;
-        see "Adding Tests".
+        see "Enabling Tests".
 
     *   Dist::Zilla::Plugin::CriticTests, which checks your code against
         best practices. See Perl::Critic for details.
@@ -64,7 +64,7 @@ DESCRIPTION
 
     *   Dist::Zilla::Plugin::NoTabsTests, which ensures you don't use *The
         Evil Character*. See Test::NoTabs for details. If you wish to
-        exclude this plugin, see "Excluding Tests".
+        exclude this plugin, see "Disabling Tests".
 
     *   Dist::Zilla::Plugin::PodCoverageTests, which checks that you have
         Pod documentation for the things you should have it for. See
@@ -93,13 +93,13 @@ DESCRIPTION
             [@TestingMania]
             changelog = CHANGELOG
 
-  Excluding Tests
+  Disabling Tests
     To exclude a testing plugin, give a comma-separated list in dist.ini:
 
         [@TestingMania]
-        skip = EOLTests,NoTabsTests
+        disable = EOLTests,NoTabsTests
 
-  Adding Tests
+  Enabling Tests
     This pluginbundle may have depend on some testing plugins that aren't
     enabled by default. This option allows you to turn them on. Attempting
     to add plugins which are not listed above will have *no effect*.
@@ -107,7 +107,7 @@ DESCRIPTION
     To enable a testing plugin, give a comma-separated list in dist.ini:
 
         [@TestingMania]
-        add = ConsistentVersionTest
+        enable = ConsistentVersionTest
 
 AVAILABILITY
     The project homepage is
@@ -135,7 +135,8 @@ BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>.
+    <https://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>
+    .
 
 AUTHOR
     Mike Doherty <doherty@cpan.org>

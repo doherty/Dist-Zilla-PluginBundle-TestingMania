@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.009     2011-04-19
  * Renamed options for clarity: add -> enable; skip -> disable
  * Don't require the absolute latest prerequisites
  * Require a version of the Test::CPAN::Meta::JSON plugin that prunes itself
