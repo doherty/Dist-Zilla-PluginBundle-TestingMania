@@ -21,12 +21,11 @@ subtest 'default' => sub {
     $tzil->build;
 
     my @tests = map $_->name =~ m{^t/} ? $_->name : (), $tzil->files->flatten;
-    @tests = sort @tests;
-    is_deeply(\@tests, [sort qw(t/00-compile.t)], 'tests are all there') or diag explain \@tests;
+    is_filelist(\@tests, [qw(t/00-compile.t)],
+        'tests are all there') or diag explain \@tests;
 
     my @xtests = map $_->name =~ m{^xt/} ? $_->name : (), $tzil->files->flatten;
-    @xtests = sort @xtests;
-    is_deeply(\@xtests, [sort qw(       xt/author/critic.t              xt/release/kwalitee.t
+    is_filelist(\@xtests, [qw(           xt/author/critic.t              xt/release/kwalitee.t
             xt/release/unused-vars.t    xt/release/minimum-version.t    xt/release/dist-manifest.t
             xt/release/portability.t    xt/release/pod-coverage.t       xt/release/has-version.t
             xt/release/eol.t            xt/release/cpan-changes.t       xt/release/synopsis.t
