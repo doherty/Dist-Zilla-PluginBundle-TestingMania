@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.010
+    version 0.011
 
 SYNOPSIS
     In dist.ini:
@@ -33,7 +33,11 @@ DESCRIPTION
         see "Enabling Tests".
 
     *   Dist::Zilla::Plugin::CriticTests, which checks your code against
-        best practices. See Perl::Critic for details.
+        best practices. See Perl::Critic for details. You can set a
+        perlcritic config file:
+
+            [@TestingMania]
+            critic_config = perlcriticrc
 
     *   Dist::Zilla::Plugin::DistManifestTests, which tests MANIFEST for
         correctness. See Test::DistManifest for details.
