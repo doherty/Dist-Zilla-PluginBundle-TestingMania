@@ -1,0 +1,7 @@
+verbose = %f: %m at line %l, column %c, near '%r'. (Severity: %s; Policy: %p)\n
+
+[TestingAndDebugging::RequireUseWarnings]
+equivalent_modules = perl5i::2
+
+[TestingAndDebugging::RequireUseStrict]
+equivalent_modules = perl5i::2

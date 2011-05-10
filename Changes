@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Allow setting a perlcritic config file
 
 0.010     2011-04-20
  * Forgotten hash key renamed [rstauner]
