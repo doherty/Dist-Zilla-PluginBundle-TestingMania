@@ -30,7 +30,7 @@ subtest 'default' => sub {
             xt/release/portability.t    xt/release/pod-coverage.t       xt/release/has-version.t
             xt/release/eol.t            xt/release/cpan-changes.t       xt/release/synopsis.t
             xt/release/no-tabs.t        xt/release/pod-linkcheck.t      xt/release/pod-syntax.t
-            xt/release/distmeta.t       xt/release/meta-json.t)],
+            xt/release/distmeta.t       xt/release/meta-json.t          xt/release/mojibake.t)],
         'xtests are all there') or diag explain \@xtests;
 };
 
