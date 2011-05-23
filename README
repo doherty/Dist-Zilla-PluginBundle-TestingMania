@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.011
+    version 0.012
 
 SYNOPSIS
     In dist.ini:
@@ -66,6 +66,9 @@ DESCRIPTION
         minimum required version of perl. See Test::MinimumVersion for
         details, including limitations.
 
+    *   Dist::Zilla::Plugin::MojibakeTests, which tests for the correct
+        source/documentation character encoding.
+
     *   Dist::Zilla::Plugin::NoTabsTests, which ensures you don't use *The
         Evil Character*. See Test::NoTabs for details. If you wish to
         exclude this plugin, see "Disabling Tests".
@@ -123,24 +126,23 @@ AVAILABILITY
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-TestingMania/>.
 
     The development version lives at
-    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
-    be cloned from
-    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>.
+    <http://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania> and
+    may be cloned from
+    <git://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania.git>.
     Instead of sending patches, please fork this project using the standard
     git and github infrastructure.
 
 SOURCE
     The development version is on github at
-    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
-    be cloned from
-    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>
+    <http://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania> and
+    may be cloned from
+    <git://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania.git>
 
 BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <https://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>
-    .
+    <http://rt.cpan.org>.
 
 AUTHOR
     Mike Doherty <doherty@cpan.org>

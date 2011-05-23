@@ -15,6 +15,7 @@ use Dist::Zilla::Plugin::HasVersionTests                qw();
 use Dist::Zilla::Plugin::KwaliteeTests                  qw();
 use Dist::Zilla::Plugin::MetaTests                      qw();
 use Dist::Zilla::Plugin::MinimumVersionTests            qw();
+use Dist::Zilla::Plugin::MojibakeTests                  qw();
 use Dist::Zilla::Plugin::NoTabsTests                    qw();
 use Dist::Zilla::Plugin::PodCoverageTests               qw();
 use Dist::Zilla::Plugin::PodSyntaxTests                 qw();
@@ -113,6 +114,11 @@ limitations.
 
 =item *
 
+L<Dist::Zilla::Plugin::MojibakeTests>, which tests for the correct
+source/documentation character encoding.
+
+=item *
+
 L<Dist::Zilla::Plugin::NoTabsTests>, which ensures you don't use I<The Evil
 Character>. See L<Test::NoTabs> for details. If you wish to exclude this plugin,
 see L</"Disabling Tests">.
@@ -197,6 +203,7 @@ sub configure {
         KwaliteeTests           => 1,
         MetaTests               => 1, # should only be loaded if MetaYAML is loaded, or the file exists in the dist
         MinimumVersionTests     => 1,
+        MojibakeTests           => 1,
         NoTabsTests             => 1,
         PodCoverageTests        => 1,
         PodSyntaxTests          => 1,
