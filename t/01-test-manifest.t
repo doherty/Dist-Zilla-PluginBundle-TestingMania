@@ -25,9 +25,9 @@ subtest 'default' => sub {
         'tests are all there') or diag explain \@tests;
 
     my @xtests = map $_->name =~ m{^xt/} ? $_->name : (), $tzil->files->flatten;
-    is_filelist(\@xtests, [qw(           xt/author/critic.t              xt/release/kwalitee.t
+    is_filelist(\@xtests, [qw(          xt/author/critic.t              xt/release/kwalitee.t
             xt/release/unused-vars.t    xt/release/minimum-version.t    xt/release/dist-manifest.t
-            xt/release/portability.t    xt/release/pod-coverage.t       xt/release/has-version.t
+            xt/release/portability.t    xt/release/pod-coverage.t       xt/release/test-version.t
             xt/release/eol.t            xt/release/cpan-changes.t       xt/release/synopsis.t
             xt/release/no-tabs.t        xt/release/pod-linkcheck.t      xt/release/pod-syntax.t
             xt/release/distmeta.t       xt/release/meta-json.t          xt/release/mojibake.t)],
@@ -35,7 +35,7 @@ subtest 'default' => sub {
 };
 
 subtest 'enable' => sub {
-    plan tests => 1;
+    plan skip_all => 'all tests are on by default now';#tests => 1;
 
     my $tzil = Builder->from_config(
         { dist_root => 'corpus/dist/DZT' },
@@ -51,6 +51,7 @@ subtest 'enable' => sub {
 
     my $has_consistentversiontest = grep $_->name eq 'xt/release/consistent-version.t', $tzil->files->flatten;
     ok($has_consistentversiontest, 'ConsistentVersionTest added itself');
+    diag explain map { $_->name } $tzil->files->flatten;
 };
 
 subtest 'disable' => sub {

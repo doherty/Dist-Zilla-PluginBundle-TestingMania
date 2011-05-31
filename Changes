@@ -3,6 +3,7 @@ Changelog for Dist::Zilla::PluginBundle::TestingMania
 {{$NEXT}}
 
 0.011     2011-05-09
+ * Add a Test::Version plugin by xenoterrocide; remove superseded plugins
  * Allow setting a perlcritic config file
 
 0.010     2011-04-20
