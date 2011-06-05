@@ -19,18 +19,9 @@ DESCRIPTION
 
         [@TestingMania]
 
-    It includes the most recent version (as of release time) of the
-    following plugins, in their default configuration. Note that not all the
-    plugins are actually *used* by default.
-
   Testing plugins
     *   Dist::Zilla::Plugin::CompileTests, which performs tests to syntax
         check your dist.
-
-    *   Dist::Zilla::Plugin::ConsistentVersionTest, which tests that all
-        modules in the dist have the same version. See
-        Test::ConsistentVersion for details. This is not enabled by default;
-        see "Enabling Tests".
 
     *   Dist::Zilla::Plugin::CriticTests, which checks your code against
         best practices. See Perl::Critic for details. You can set a
@@ -46,8 +37,9 @@ DESCRIPTION
         endings are used (and also checks for trailing whitespace). See
         Test::EOL for details.
 
-    *   Dist::Zilla::Plugin::HasVersionTests, which tests that your dist has
-        version numbers. See Test::HasVersion for what that means.
+    *   Dist::Zilla::Plugin::Test::Version, which tests that your dist has
+        version numbers, and that they are valid. See Test::Version for
+        exactly what that means.
 
     *   Dist::Zilla::Plugin::KwaliteeTests, which performs some basic
         kwalitee checks. *Kwalitee* is an automatically-measurable guage of
@@ -126,23 +118,24 @@ AVAILABILITY
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-TestingMania/>.
 
     The development version lives at
-    <http://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania> and
-    may be cloned from
-    <git://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania.git>.
+    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
+    be cloned from
+    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>.
     Instead of sending patches, please fork this project using the standard
     git and github infrastructure.
 
 SOURCE
     The development version is on github at
-    <http://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania> and
-    may be cloned from
-    <git://github.com/creaktive/Dist-Zilla-PluginBundle-TestingMania.git>
+    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
+    be cloned from
+    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>
 
 BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <http://rt.cpan.org>.
+    <https://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>
+    .
 
 AUTHOR
     Mike Doherty <doherty@cpan.org>
