@@ -142,6 +142,11 @@ variables. See L<Test::Vars> for details.
 
 =item *
 
+L<Dist::Zilla::Plugin::Test::Pod::LinkCheck>, which checks the links in your POD.
+See L<Test::Pod::LinkCheck> for details.
+
+=item *
+
 L<Dist::Zilla::Plugin::Test::CPAN::Changes>, which checks your changelog for
 conformance with L<CPAN::Changes::Spec>. See L<Test::CPAN::Changes> for details.
 

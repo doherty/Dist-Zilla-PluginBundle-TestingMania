@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Add mention of Test::Pod::LinkCheck plugin
 
 0.012     2011-06-05
  * Add a Test::Version plugin by xenoterrocide; remove superseded plugins
