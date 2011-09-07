@@ -19,7 +19,7 @@ use Dist::Zilla::Plugin::PodCoverageTests               qw();
 use Dist::Zilla::Plugin::PodSyntaxTests                 qw();
 use Dist::Zilla::Plugin::Test::Portability  v2.0.0      qw();
 use Dist::Zilla::Plugin::Test::Synopsis     v2.0.0      qw();
-use Dist::Zilla::Plugin::UnusedVarsTests                qw();
+use Dist::Zilla::Plugin::Test::UnusedVars   v2.0.0      qw();
 use Dist::Zilla::Plugin::Test::Version 0.001002         qw(); # New name
 use Dist::Zilla::Plugin::Test::Pod::LinkCheck           qw();
 use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON 0.003   qw(); # Prunes itself when META.json isn't present
@@ -138,7 +138,7 @@ from your SYNOPSIS section. See L<Test::Synopsis> for details and limitations.
 
 =item *
 
-L<Dist::Zilla::Plugin::UnusedVarsTests>, which checks your dist for unused
+L<Dist::Zilla::Plugin::Test::UnusedVars>, which checks your dist for unused
 variables. See L<Test::Vars> for details.
 
 =item *
@@ -204,7 +204,7 @@ sub configure {
         PodSyntaxTests          => 1,
         'Test::Portability'     => 1,
         'Test::Synopsis'        => 1,
-        UnusedVarsTests         => 1,
+        'Test::UnusedVars'      => 1,
     );
     my @include = ();
 
