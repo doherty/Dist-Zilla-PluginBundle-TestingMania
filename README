@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.012
+    version 0.013
 
 SYNOPSIS
     In dist.ini:
@@ -20,12 +20,14 @@ DESCRIPTION
         [@TestingMania]
 
   Testing plugins
-    *   Dist::Zilla::Plugin::CompileTests, which performs tests to syntax
+    *   Dist::Zilla::Plugin::Test::Compile, which performs tests to syntax
         check your dist.
 
-    *   Dist::Zilla::Plugin::CriticTests, which checks your code against
-        best practices. See Perl::Critic for details. You can set a
-        perlcritic config file:
+    *   Dist::Zilla::Plugin::Test::Perl::Critic, which checks your code
+        against best practices. See Test::Perl::Critic and Perl::Critic for
+        details.
+
+        You can set a perlcritic config file:
 
             [@TestingMania]
             critic_config = perlcriticrc
@@ -82,6 +84,9 @@ DESCRIPTION
 
     *   Dist::Zilla::Plugin::UnusedVarsTests, which checks your dist for
         unused variables. See Test::Vars for details.
+
+    *   Dist::Zilla::Plugin::Test::Pod::LinkCheck, which checks the links in
+        your POD. See Test::Pod::LinkCheck for details.
 
     *   Dist::Zilla::Plugin::Test::CPAN::Changes, which checks your
         changelog for conformance with CPAN::Changes::Spec. See
