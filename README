@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version v0.13
+    version 0.14
 
 SYNOPSIS
     In dist.ini:
@@ -115,7 +115,7 @@ DESCRIPTION
 
 AVAILABILITY
     The project homepage is
-    <http://p3rl.org/Dist::Zilla::PluginBundle::TestingMania>.
+    <http://metacpan.org/release/Dist-Zilla-PluginBundle-TestingMania/>.
 
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
