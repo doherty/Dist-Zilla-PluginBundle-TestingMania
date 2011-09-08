@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.013
+    version v0.13
 
 SYNOPSIS
     In dist.ini:
@@ -111,7 +111,7 @@ DESCRIPTION
     To enable a testing plugin, give a comma-separated list in dist.ini:
 
         [@TestingMania]
-        enable = ConsistentVersionTest
+        enable = Test::Compile
 
 AVAILABILITY
     The project homepage is
