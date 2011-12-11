@@ -5,24 +5,6 @@ use warnings;
 use 5.010001; # We use the smart match operator
 # VERSION
 
-use Dist::Zilla::Plugin::Test::CPAN::Changes    0.005       qw(); # test failures
-use Dist::Zilla::Plugin::Test::Compile          1.112400    qw(); # bugfixes & test suite (& new name in 1.112390)
-use Dist::Zilla::Plugin::Test::Perl::Critic     2.112410    qw(); # new name (& bugfixes in 1.111450)
-use Dist::Zilla::Plugin::Test::DistManifest     2.0.1       qw();
-use Dist::Zilla::Plugin::EOLTests               0.02        qw(); # Also checks for trailing whitespace
-use Dist::Zilla::Plugin::Test::Kwalitee         2.020000    qw(); # bunch o' fixes
-use Dist::Zilla::Plugin::MetaTests                          qw(); # core
-use Dist::Zilla::Plugin::Test::MinimumVersion   2.0.1       qw();
-use Dist::Zilla::Plugin::MojibakeTests          0.2         qw(); # test suite
-use Dist::Zilla::Plugin::NoTabsTests            0.01        qw();
-use Dist::Zilla::Plugin::PodCoverageTests                   qw(); # core
-use Dist::Zilla::Plugin::PodSyntaxTests                     qw(); # core
-use Dist::Zilla::Plugin::Test::Portability      2.0.1       qw();
-use Dist::Zilla::Plugin::Test::Synopsis         2.0.1       qw();
-use Dist::Zilla::Plugin::Test::UnusedVars       2.0.1       qw();
-use Dist::Zilla::Plugin::Test::Version          0.001002    qw(); # New name
-use Dist::Zilla::Plugin::Test::Pod::LinkCheck   1.001       qw(); # packaging
-use Dist::Zilla::Plugin::Test::CPAN::Meta::JSON 0.003       qw(); # Prunes itself when META.json isn't present
 
 use Moose;
 use namespace::autoclean;
