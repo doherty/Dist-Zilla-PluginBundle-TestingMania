@@ -25,13 +25,12 @@ my %module_build_args = (
     "Mike Doherty <doherty\@cpan.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-TestingMania",
-  "dist_version" => "0.14",
+  "dist_version" => "0.15",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::TestingMania",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Dist::Zilla::Plugin::EOLTests" => "0.02",
     "Dist::Zilla::Plugin::MetaTests" => 0,
     "Dist::Zilla::Plugin::MojibakeTests" => "0.2",
     "Dist::Zilla::Plugin::NoTabsTests" => "0.01",
@@ -41,6 +40,7 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" => "0.003",
     "Dist::Zilla::Plugin::Test::Compile" => "1.112400",
     "Dist::Zilla::Plugin::Test::DistManifest" => "2.0.1",
+    "Dist::Zilla::Plugin::Test::EOL" => 0,
     "Dist::Zilla::Plugin::Test::Kwalitee" => "2.020000",
     "Dist::Zilla::Plugin::Test::MinimumVersion" => "2.0.1",
     "Dist::Zilla::Plugin::Test::Perl::Critic" => "2.112410",

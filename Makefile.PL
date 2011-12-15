@@ -30,7 +30,6 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::PluginBundle::TestingMania",
   "PREREQ_PM" => {
-    "Dist::Zilla::Plugin::EOLTests" => "0.02",
     "Dist::Zilla::Plugin::MetaTests" => 0,
     "Dist::Zilla::Plugin::MojibakeTests" => "0.2",
     "Dist::Zilla::Plugin::NoTabsTests" => "0.01",
@@ -40,6 +39,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" => "0.003",
     "Dist::Zilla::Plugin::Test::Compile" => "1.112400",
     "Dist::Zilla::Plugin::Test::DistManifest" => "2.0.1",
+    "Dist::Zilla::Plugin::Test::EOL" => 0,
     "Dist::Zilla::Plugin::Test::Kwalitee" => "2.020000",
     "Dist::Zilla::Plugin::Test::MinimumVersion" => "2.0.1",
     "Dist::Zilla::Plugin::Test::Perl::Critic" => "2.112410",
@@ -58,7 +58,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.14",
+  "VERSION" => "0.15",
   "test" => {
     "TESTS" => "t/*.t"
   }

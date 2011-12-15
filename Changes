@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.15      2011-12-15
  * List prereqs as prereqs instead of use-ing them [Caleb Cushing]
  * Use DZP::Test::EOL (an author test) instead of EOLTests (a release test) [GH #13, thanks to Caleb Cushing]
 

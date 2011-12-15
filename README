@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.14
+    version 0.15
 
 SYNOPSIS
     In dist.ini:
@@ -35,7 +35,7 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::Test::DistManifest, which tests MANIFEST for
         correctness. See Test::DistManifest for details.
 
-    *   Dist::Zilla::Plugin::EOLTests, which ensures the correct line
+    *   Dist::Zilla::Plugin::Test::EOL, which ensures the correct line
         endings are used (and also checks for trailing whitespace). See
         Test::EOL for details.
 
