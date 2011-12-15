@@ -56,7 +56,7 @@ correctness. See L<Test::DistManifest> for details.
 
 =item *
 
-L<Dist::Zilla::Plugin::EOLTests>, which ensures the correct line endings are
+L<Dist::Zilla::Plugin::Test::EOL>, which ensures the correct line endings are
 used (and also checks for trailing whitespace). See L<Test::EOL> for details.
 
 =item *
@@ -177,7 +177,7 @@ sub configure {
         'Test::Compile'         => 1,
         'Test::Perl::Critic'    => $self->config_slice('critic_config'),
         'Test::DistManifest'    => 1,
-        EOLTests                => 1,
+        'Test::EOL'             => 1,
         'Test::Kwalitee'        => 1,
         MetaTests               => 1, # should only be loaded if MetaYAML is loaded, or the file exists in the dist
         'Test::MinimumVersion'  => 1,
