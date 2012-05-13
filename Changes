@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Require JSON::PP 2.27103
 
 0.15      2011-12-15
  * List prereqs as prereqs instead of use-ing them [Caleb Cushing]
