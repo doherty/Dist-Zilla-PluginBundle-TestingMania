@@ -146,10 +146,11 @@ Set C<changelog> in F<dist.ini> if you don't use F<Changes>:
 
 =head2 Disabling Tests
 
-To exclude a testing plugin, give a comma-separated list in F<dist.ini>:
+To exclude a testing plugin, specify them with C<disable> in F<dist.ini>
 
     [@TestingMania]
-    disable = Test::DistManifest,Test::Kwalitee
+    disable = Test::DistManifest
+    disable = Test::Kwalitee
 
 =head2 Enabling Tests
 
@@ -157,14 +158,30 @@ This pluginbundle may have some testing plugins that aren't
 enabled by default. This option allows you to turn them on. Attempting to add
 plugins which are not listed above will have I<no effect>.
 
-To enable a testing plugin, give a comma-separated list in F<dist.ini>:
+To enable a testing plugin, specify them in F<dist.ini>:
 
     [@TestingMania]
     enable = Test::Compile
 
-=for Pod::Coverage configure
+=for Pod::Coverage configure mvp_multivalue_args
 
 =cut
+
+has enable => (
+    is => 'ro',
+    isa => 'ArrayRef[Str]',
+    lazy => 1,
+    default => sub { $_[0]->payload->{enable} || [] },
+);
+
+has disable => (
+    is => 'ro',
+    isa => 'ArrayRef[Str]',
+    lazy => 1,
+    default => sub { $_[0]->payload->{disable} || [] },
+);
+
+sub mvp_multivalue_args { qw(enable disable) }
 
 sub configure {
     my $self = shift;
@@ -191,9 +208,7 @@ sub configure {
     );
     my @include = ();
 
-    my @disable = $self->payload->{disable}
-        ? split(/, ?/, $self->payload->{disable})
-        : ();
+    my @disable = map { (split /,\s?/, $_) } @{ $self->disable };
     foreach my $plugin (keys %plugins) {
         next if (                   # Skip...
             $plugin ~~ @disable or  # plugins they asked to skip
@@ -205,9 +220,7 @@ sub configure {
             : $plugin);
     }
 
-    my @enable = $self->payload->{enable}
-        ? split(/, ?/, $self->payload->{enable})
-        : ();
+    my @enable = map { (split /,\s?/, $_) } @{ $self->enable };
     foreach my $plugin (@enable) {
         next unless $plugin ~~ %plugins; # Skip the plugin unless it is in the list of actual testing plugins
         push(@include, $plugin) unless ($plugin ~~ @include or $plugin ~~ @disable);
