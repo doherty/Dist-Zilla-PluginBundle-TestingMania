@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.16      2012-06-16
  * Require JSON::PP 2.27103
  * Allow specifying enable/disable multiple times in dist.ini instead of a comma-separated list
 
