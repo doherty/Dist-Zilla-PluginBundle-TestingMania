@@ -22,6 +22,7 @@ my %WriteMakefileArgs = (
     "autodie" => 0
   },
   "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
   "DISTNAME" => "Dist-Zilla-PluginBundle-TestingMania",
@@ -37,15 +38,15 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Test::CPAN::Changes" => "0.005",
     "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" => "0.003",
     "Dist::Zilla::Plugin::Test::Compile" => "1.112400",
-    "Dist::Zilla::Plugin::Test::DistManifest" => "v2.0.1",
+    "Dist::Zilla::Plugin::Test::DistManifest" => "2.000001",
     "Dist::Zilla::Plugin::Test::EOL" => 0,
     "Dist::Zilla::Plugin::Test::Kwalitee" => "2.020000",
-    "Dist::Zilla::Plugin::Test::MinimumVersion" => "v2.0.1",
+    "Dist::Zilla::Plugin::Test::MinimumVersion" => "2.000001",
     "Dist::Zilla::Plugin::Test::Perl::Critic" => "2.112410",
     "Dist::Zilla::Plugin::Test::Pod::LinkCheck" => "1.001",
-    "Dist::Zilla::Plugin::Test::Portability" => "v2.0.1",
-    "Dist::Zilla::Plugin::Test::Synopsis" => "v2.0.1",
-    "Dist::Zilla::Plugin::Test::UnusedVars" => "v2.0.1",
+    "Dist::Zilla::Plugin::Test::Portability" => "2.000001",
+    "Dist::Zilla::Plugin::Test::Synopsis" => "2.000001",
+    "Dist::Zilla::Plugin::Test::UnusedVars" => "2.000001",
     "Dist::Zilla::Plugin::Test::Version" => "0.001002",
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "JSON::PP" => "2.27103",
@@ -58,7 +59,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.16",
+  "VERSION" => "0.17",
   "test" => {
     "TESTS" => "t/*.t"
   }

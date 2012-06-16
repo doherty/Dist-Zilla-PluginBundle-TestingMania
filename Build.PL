@@ -17,6 +17,7 @@ my %module_build_args = (
     "autodie" => 0
   },
   "configure_requires" => {
+    "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
   "dist_abstract" => "test your dist with every testing plugin conceivable",
@@ -24,7 +25,7 @@ my %module_build_args = (
     "Mike Doherty <doherty\@cpan.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-TestingMania",
-  "dist_version" => "0.16",
+  "dist_version" => "0.17",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::TestingMania",
   "recommends" => {},
@@ -38,15 +39,15 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::Test::CPAN::Changes" => "0.005",
     "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" => "0.003",
     "Dist::Zilla::Plugin::Test::Compile" => "1.112400",
-    "Dist::Zilla::Plugin::Test::DistManifest" => "v2.0.1",
+    "Dist::Zilla::Plugin::Test::DistManifest" => "2.000001",
     "Dist::Zilla::Plugin::Test::EOL" => 0,
     "Dist::Zilla::Plugin::Test::Kwalitee" => "2.020000",
-    "Dist::Zilla::Plugin::Test::MinimumVersion" => "v2.0.1",
+    "Dist::Zilla::Plugin::Test::MinimumVersion" => "2.000001",
     "Dist::Zilla::Plugin::Test::Perl::Critic" => "2.112410",
     "Dist::Zilla::Plugin::Test::Pod::LinkCheck" => "1.001",
-    "Dist::Zilla::Plugin::Test::Portability" => "v2.0.1",
-    "Dist::Zilla::Plugin::Test::Synopsis" => "v2.0.1",
-    "Dist::Zilla::Plugin::Test::UnusedVars" => "v2.0.1",
+    "Dist::Zilla::Plugin::Test::Portability" => "2.000001",
+    "Dist::Zilla::Plugin::Test::Synopsis" => "2.000001",
+    "Dist::Zilla::Plugin::Test::UnusedVars" => "2.000001",
     "Dist::Zilla::Plugin::Test::Version" => "0.001002",
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "JSON::PP" => "2.27103",
