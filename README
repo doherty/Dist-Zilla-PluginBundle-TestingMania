@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.15
+    version 0.16
 
 SYNOPSIS
     In dist.ini:
@@ -98,17 +98,18 @@ DESCRIPTION
             changelog = CHANGELOG
 
   Disabling Tests
-    To exclude a testing plugin, give a comma-separated list in dist.ini:
+    To exclude a testing plugin, specify them with "disable" in dist.ini
 
         [@TestingMania]
-        disable = Test::DistManifest,Test::Kwalitee
+        disable = Test::DistManifest
+        disable = Test::Kwalitee
 
   Enabling Tests
     This pluginbundle may have some testing plugins that aren't enabled by
     default. This option allows you to turn them on. Attempting to add
     plugins which are not listed above will have *no effect*.
 
-    To enable a testing plugin, give a comma-separated list in dist.ini:
+    To enable a testing plugin, specify them in dist.ini:
 
         [@TestingMania]
         enable = Test::Compile
@@ -120,14 +121,7 @@ AVAILABILITY
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see
-    <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-TestingMania/>.
-
-    The development version lives at
-    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
-    be cloned from
-    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>.
-    Instead of sending patches, please fork this project using the standard
-    git and github infrastructure.
+    <https://metacpan.org/module/Dist::Zilla::PluginBundle::TestingMania/>.
 
 SOURCE
     The development version is on github at
@@ -136,9 +130,8 @@ SOURCE
     <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>
 
 BUGS AND LIMITATIONS
-    No bugs have been reported.
-
-    Please report any bugs or feature requests through the web interface at
+    You can make new bug reports, and view existing ones, through the web
+    interface at
     <https://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>
     .
 
