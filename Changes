@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Use decimal version numbers for prereqs
 
 0.16      2012-06-16
  * Require JSON::PP 2.27103
