@@ -17,7 +17,6 @@ my %module_build_args = (
     "autodie" => 0
   },
   "configure_requires" => {
-    "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
   "dist_abstract" => "test your dist with every testing plugin conceivable",
@@ -25,7 +24,7 @@ my %module_build_args = (
     "Mike Doherty <doherty\@cpan.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-TestingMania",
-  "dist_version" => "0.17",
+  "dist_version" => "0.18",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::TestingMania",
   "recommends" => {},

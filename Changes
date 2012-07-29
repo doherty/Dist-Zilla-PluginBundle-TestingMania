@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.18      2012-07-29
  * Allow setting is_strict and has_version for Test::Version plugin
 
 0.17      2012-06-16

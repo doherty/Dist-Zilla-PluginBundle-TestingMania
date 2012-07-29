@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.17
+    version 0.18
 
 SYNOPSIS
     In dist.ini:
@@ -42,6 +42,11 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::Test::Version, which tests that your dist has
         version numbers, and that they are valid. See Test::Version for
         exactly what that means.
+
+        You can set "strict_version" and "has_version", and they'll be
+        passed through to the plugin as "is_strict" and "has_version"
+        respectively. See the documentation of Test::Version for a
+        description of these options.
 
     *   Dist::Zilla::Plugin::Test::Kwalitee, which performs some basic
         kwalitee checks. *Kwalitee* is an automatically-measurable guage of
