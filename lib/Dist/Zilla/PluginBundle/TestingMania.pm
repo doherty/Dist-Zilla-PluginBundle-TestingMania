@@ -65,6 +65,10 @@ L<Dist::Zilla::Plugin::Test::Version>, which tests that your dist has
 version numbers, and that they are valid. See L<Test::Version> for exactly
 what that means.
 
+You can set C<strict_version> and C<has_version>, and they'll be passed through to
+the plugin as C<is_strict> and C<has_version> respectively. See the
+documentation of L<Test::Version> for a description of these options.
+
 =item *
 
 L<Dist::Zilla::Plugin::Test::Kwalitee>, which performs some basic kwalitee checks.
@@ -190,7 +194,7 @@ sub configure {
         'Test::CPAN::Changes'   => $self->config_slice('changelog'),
         'Test::CPAN::Meta::JSON'=> 1, # prunes itself if META.json isn't there
         'Test::Pod::LinkCheck'  => 1,
-        'Test::Version'         => 1,
+        'Test::Version'         => $self->config_slice('has_version', { strict_version => 'is_strict' }),
         'Test::Compile'         => 1,
         'Test::Perl::Critic'    => $self->config_slice('critic_config'),
         'Test::DistManifest'    => 1,

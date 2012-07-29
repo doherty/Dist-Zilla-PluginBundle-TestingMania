@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+ * Allow setting is_strict and has_version for Test::Version plugin
 
 0.17      2012-06-16
  * Use decimal version numbers for prereqs
