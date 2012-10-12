@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More 0.88 tests => 3;
+use Test::More 0.88 tests => 4;
 use autodie;
 use Test::DZil;
 use Moose::Autobox;
@@ -10,12 +10,14 @@ subtest 'default' => sub {
 
     my $tzil = Builder->from_config(
         { dist_root => 'corpus/dist/DZT' },
-        {
-            add_files => {
+        { add_files => {
                 'source/dist.ini' => simple_ini(
-                    ('GatherDir', 'MetaYAML', 'MetaJSON', '@TestingMania')
-                ),
-            },
+                    'GatherDir',
+                    'MetaYAML',
+                    'MetaJSON',
+                    '@TestingMania'
+                )
+            }
         },
     );
     $tzil->build;
@@ -39,18 +41,20 @@ subtest 'enable' => sub {
 
     my $tzil = Builder->from_config(
         { dist_root => 'corpus/dist/DZT' },
-        {
-            add_files => {
+        { add_files => {
                 'source/dist.ini' => simple_ini(
-                    ('GatherDir', 'MetaYAML', 'MetaJSON', ['@TestingMania' => {enable => 'ConsistentVersionTest'} ])
-                ),
-            },
-        },
+                    'GatherDir',
+                    'MetaYAML',
+                    'MetaJSON',
+                    ['@TestingMania' => {enable => 'ConsistentVersionTest'} ],
+                )
+            }
+        }
     );
     $tzil->build;
 
     my $has_consistentversiontest = grep $_->name eq 'xt/release/consistent-version.t', $tzil->files->flatten;
-    ok($has_consistentversiontest, 'ConsistentVersionTest added itself');
+    ok $has_consistentversiontest, 'ConsistentVersionTest added itself';
     diag explain map { $_->name } $tzil->files->flatten;
 };
 
@@ -59,21 +63,51 @@ subtest 'disable' => sub {
 
     my $tzil = Builder->from_config(
         { dist_root => 'corpus/dist/DZT' },
+        { add_files => {
+                'source/dist.ini' => simple_ini(
+                    'GatherDir',
+                    'MetaYAML',
+                    'MetaJSON',
+                    ['@TestingMania' => { disable => [qw(Test::EOL NoTabsTests)] } ],
+                )
+            }
+        }
+    );
+    $tzil->build;
+
+    my @files = map { $_->name } $tzil->files->flatten;
+    my $has_eoltest = grep { $_ eq 'xt/author/test-eol.t' } @files;
+    ok !$has_eoltest, 'EOLTests was disabled';
+
+    my $has_notabstest = grep { $_ eq 'xt/release/no-tabs.t' } @files;
+    ok !$has_notabstest, 'NoTabsTests was disabled';
+};
+
+subtest 'nonexistent test' => sub {
+    my $tzil = Builder->from_config(
+        { dist_root => 'corpus/dist/DZT' },
         {
             add_files => {
                 'source/dist.ini' => simple_ini(
-                    ('GatherDir', 'MetaYAML', 'MetaJSON', ['@TestingMania' => {disable => 'EOLTests,NoTabsTests'} ])
+                    ('GatherDir', 'MetaYAML', 'MetaJSON', ['@TestingMania' => { disable => 'Nonexistent', enable => 'Test::EOL' }])
                 ),
             },
         },
     );
     $tzil->build;
 
-    my $has_eoltest = grep $_->name eq 'xt/release/eol.t', $tzil->files->flatten;
-    ok(!$has_eoltest, 'EOLTests was disabled');
+    my @tests = map $_->name =~ m{^x?t/} ? $_->name : (), $tzil->files->flatten;
+    my $has_eoltest = grep { $_ eq 'xt/author/test-eol.t' } @tests;
+    ok $has_eoltest, 'EOLTests enbled';
 
-    my $has_notabstest = grep $_->name eq 'xt/release/no-tabs.t', $tzil->files->flatten;
-    ok(!$has_notabstest, 'NoTabsTests was disabled');
+    is_filelist \@tests, [qw(           t/00-compile.t                  xt/author/critic.t
+        xt/author/test-eol.t            xt/release/test-version.t       xt/release/pod-coverage.t
+        xt/release/synopsis.t           xt/release/dist-manifest.t      xt/release/meta-json.t
+        xt/release/cpan-changes.t       xt/release/distmeta.t           xt/release/unused-vars.t
+        xt/release/kwalitee.t           xt/release/no-tabs.t            xt/release/minimum-version.t
+        xt/release/portability.t        xt/release/pod-linkcheck.t      xt/release/pod-syntax.t
+        xt/release/mojibake.t
+    )];
 };
 
 END { # Remove (empty) dir created by building the dists

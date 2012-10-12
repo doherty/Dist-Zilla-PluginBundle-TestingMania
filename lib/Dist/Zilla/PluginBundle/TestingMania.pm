@@ -2,10 +2,9 @@ package Dist::Zilla::PluginBundle::TestingMania;
 # ABSTRACT: test your dist with every testing plugin conceivable
 use strict;
 use warnings;
-use 5.010001; # We use the smart match operator
 # VERSION
 
-
+use List::MoreUtils qw( any );
 use Moose;
 use namespace::autoclean;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
@@ -214,10 +213,10 @@ sub configure {
 
     my @disable = map { (split /,\s?/, $_) } @{ $self->disable };
     foreach my $plugin (keys %plugins) {
-        next if (                   # Skip...
-            $plugin ~~ @disable or  # plugins they asked to skip
-            $plugin ~~ @include or  # plugins we already included
-            !$plugins{$plugin}      # plugins in the list, but which we don't want to add
+        next if (                              # Skip...
+            any { $_ eq $plugin } @disable or  # plugins they asked to skip
+            any { $_ eq $plugin } @include or  # plugins we already included
+            !$plugins{$plugin}          # plugins in the list, but which we don't want to add
         );
         push(@include, ref $plugins{$plugin}
             ? [ $plugin => $plugins{$plugin} ]
@@ -226,8 +225,8 @@ sub configure {
 
     my @enable = map { (split /,\s?/, $_) } @{ $self->enable };
     foreach my $plugin (@enable) {
-        next unless $plugin ~~ %plugins; # Skip the plugin unless it is in the list of actual testing plugins
-        push(@include, $plugin) unless ($plugin ~~ @include or $plugin ~~ @disable);
+        next unless any { $_ eq $plugin } %plugins; # Skip the plugin unless it is in the list of actual testing plugins
+        push(@include, $plugin) unless ( any { $_ eq $plugin } @include or any { $_ eq $plugin } @disable);
     }
 
     $self->add_plugins(@include);
