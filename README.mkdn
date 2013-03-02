@@ -4,7 +4,7 @@ Dist::Zilla::PluginBundle::TestingMania - test your dist with every testing plug
 
 # VERSION
 
-version 0.18
+version 0.19
 
 # SYNOPSIS
 
@@ -29,10 +29,10 @@ dist.
 - [Dist::Zilla::Plugin::Test::Perl::Critic](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::Test::Perl::Critic), which checks your code against best
 practices. See [Test::Perl::Critic](http://search.cpan.org/perldoc?Test::Perl::Critic) and [Perl::Critic](http://search.cpan.org/perldoc?Perl::Critic) for details.
 
-You can set a perlcritic config file:
+    You can set a perlcritic config file:
 
-    [@TestingMania]
-    critic_config = perlcriticrc
+        [@TestingMania]
+        critic_config = perlcriticrc
 
 - [Dist::Zilla::Plugin::Test::DistManifest](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::Test::DistManifest), which tests `MANIFEST` for
 correctness. See [Test::DistManifest](http://search.cpan.org/perldoc?Test::DistManifest) for details.
@@ -42,9 +42,9 @@ used (and also checks for trailing whitespace). See [Test::EOL](http://search.cp
 version numbers, and that they are valid. See [Test::Version](http://search.cpan.org/perldoc?Test::Version) for exactly
 what that means.
 
-You can set `strict_version` and `has_version`, and they'll be passed through to
-the plugin as `is_strict` and `has_version` respectively. See the
-documentation of [Test::Version](http://search.cpan.org/perldoc?Test::Version) for a description of these options.
+    You can set `strict_version` and `has_version`, and they'll be passed through to
+    the plugin as `is_strict` and `has_version` respectively. See the
+    documentation of [Test::Version](http://search.cpan.org/perldoc?Test::Version) for a description of these options.
 
 - [Dist::Zilla::Plugin::Test::Kwalitee](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::Test::Kwalitee), which performs some basic kwalitee checks.
 _Kwalitee_ is an automatically-measurable guage of how good your software is.
@@ -56,8 +56,10 @@ actual quality. See [Test::Kwalitee](http://search.cpan.org/perldoc?Test::Kwalit
 on `META.json`, if it exists. See [Test::CPAN::Meta::JSON](http://search.cpan.org/perldoc?Test::CPAN::Meta::JSON) for what that
 means.
 - [Dist::Zilla::Plugin::Test::MinimumVersion](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::Test::MinimumVersion), which tests for the minimum
-required version of perl. See [Test::MinimumVersion](http://search.cpan.org/perldoc?Test::MinimumVersion) for details, including
-limitations.
+required version of perl. Give the highest version of perl you intend to
+require as `max_target_perl`. The generated test will fail if you accidentally
+used features from a version of perl newer than that. See
+[Test::MinimumVersion](http://search.cpan.org/perldoc?Test::MinimumVersion) for details and limitations.
 - [Dist::Zilla::Plugin::MojibakeTests](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::MojibakeTests), which tests for the correct
 source/documentation character encoding.
 - [Dist::Zilla::Plugin::NoTabsTests](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::NoTabsTests), which ensures you don't use _The Evil
@@ -80,10 +82,10 @@ See [Test::Pod::LinkCheck](http://search.cpan.org/perldoc?Test::Pod::LinkCheck) 
 - [Dist::Zilla::Plugin::Test::CPAN::Changes](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::Test::CPAN::Changes), which checks your changelog for
 conformance with [CPAN::Changes::Spec](http://search.cpan.org/perldoc?CPAN::Changes::Spec). See [Test::CPAN::Changes](http://search.cpan.org/perldoc?Test::CPAN::Changes) for details.
 
-Set `changelog` in `dist.ini` if you don't use `Changes`:
+    Set `changelog` in `dist.ini` if you don't use `Changes`:
 
-    [@TestingMania]
-    changelog = CHANGELOG
+        [@TestingMania]
+        changelog = CHANGELOG
 
 ## Disabling Tests
 

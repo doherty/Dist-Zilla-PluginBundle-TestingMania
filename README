@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.18
+    version 0.19
 
 SYNOPSIS
     In dist.ini:
@@ -62,8 +62,10 @@ DESCRIPTION
         for what that means.
 
     *   Dist::Zilla::Plugin::Test::MinimumVersion, which tests for the
-        minimum required version of perl. See Test::MinimumVersion for
-        details, including limitations.
+        minimum required version of perl. Give the highest version of perl
+        you intend to require as "max_target_perl". The generated test will
+        fail if you accidentally used features from a version of perl newer
+        than that. See Test::MinimumVersion for details and limitations.
 
     *   Dist::Zilla::Plugin::MojibakeTests, which tests for the correct
         source/documentation character encoding.

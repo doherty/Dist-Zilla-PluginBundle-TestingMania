@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.010001;
+use 5.006;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -49,6 +49,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Test::Version" => "0.001002",
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "JSON::PP" => "2.27103",
+    "List::MoreUtils" => 0,
     "Moose" => 0,
     "Pod::Coverage::TrustPod" => 0,
     "Test::CPAN::Meta" => 0,
@@ -58,7 +59,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.18",
+  "VERSION" => "0.19",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.19      2013-03-02
  * Allow setting your maximum target perl version explicitly
    with max_target_perl [xdg++]
 
