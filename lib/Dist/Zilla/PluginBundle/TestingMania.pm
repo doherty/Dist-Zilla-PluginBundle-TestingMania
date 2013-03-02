@@ -89,8 +89,10 @@ means.
 =item *
 
 L<Dist::Zilla::Plugin::Test::MinimumVersion>, which tests for the minimum
-required version of perl. See L<Test::MinimumVersion> for details, including
-limitations.
+required version of perl. Give the highest version of perl you intend to
+require as C<max_target_perl>. The generated test will fail if you accidentally
+used features from a version of perl newer than that. See
+L<Test::MinimumVersion> for details and limitations.
 
 =item *
 
@@ -200,7 +202,7 @@ sub configure {
         'Test::EOL'             => 1,
         'Test::Kwalitee'        => 1,
         MetaTests               => 1, # should only be loaded if MetaYAML is loaded, or the file exists in the dist
-        'Test::MinimumVersion'  => 1,
+        'Test::MinimumVersion'  => $self->config_slice('max_target_perl'),
         MojibakeTests           => 1,
         NoTabsTests             => 1,
         PodCoverageTests        => 1,
