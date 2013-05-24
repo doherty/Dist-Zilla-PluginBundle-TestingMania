@@ -68,12 +68,14 @@ You can set C<strict_version> and C<has_version>, and they'll be passed through 
 the plugin as C<is_strict> and C<has_version> respectively. See the
 documentation of L<Test::Version> for a description of these options.
 
+=begin comment
 =item *
 
 L<Dist::Zilla::Plugin::Test::Kwalitee>, which performs some basic kwalitee checks.
 I<Kwalitee> is an automatically-measurable guage of how good your software is.
 It bears only a B<superficial> resemblance to the human-measurable guage of
 actual quality. See L<Test::Kwalitee> for a description of the tests.
+=end comment
 
 =item *
 
@@ -155,7 +157,10 @@ To exclude a testing plugin, specify them with C<disable> in F<dist.ini>
 
     [@TestingMania]
     disable = Test::DistManifest
+
+=begin comment
     disable = Test::Kwalitee
+=end comment
 
 =head2 Enabling Tests
 
@@ -200,7 +205,7 @@ sub configure {
         'Test::Perl::Critic'    => $self->config_slice('critic_config'),
         'Test::DistManifest'    => 1,
         'Test::EOL'             => 1,
-        'Test::Kwalitee'        => 1,
+        # 'Test::Kwalitee'        => 1,
         MetaTests               => 1, # should only be loaded if MetaYAML is loaded, or the file exists in the dist
         'Test::MinimumVersion'  => $self->config_slice('max_target_perl'),
         MojibakeTests           => 1,

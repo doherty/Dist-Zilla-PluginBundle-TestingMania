@@ -27,13 +27,25 @@ subtest 'default' => sub {
         'tests are all there') or diag explain \@tests;
 
     my @xtests = map $_->name =~ m{^xt/} ? $_->name : (), $tzil->files->flatten;
-    is_filelist(\@xtests, [qw(          xt/author/critic.t              xt/author/test-eol.t
-            xt/release/kwalitee.t       xt/release/unused-vars.t        xt/release/minimum-version.t
-            xt/release/dist-manifest.t  xt/release/portability.t        xt/release/pod-coverage.t
-            xt/release/test-version.t   xt/release/cpan-changes.t       xt/release/synopsis.t
-            xt/release/no-tabs.t        xt/release/pod-linkcheck.t      xt/release/pod-syntax.t
-            xt/release/distmeta.t       xt/release/meta-json.t          xt/release/mojibake.t)],
-        'xtests are all there') or diag explain \@xtests;
+    is_filelist(\@xtests, [
+        'xt/author/critic.t',
+        'xt/author/test-eol.t',
+        'xt/release/unused-vars.t',
+        'xt/release/minimum-version.t',
+        'xt/release/dist-manifest.t',
+        'xt/release/portability.t',
+        'xt/release/pod-coverage.t',
+        'xt/release/test-version.t',
+        'xt/release/cpan-changes.t',
+        'xt/release/synopsis.t',
+        'xt/release/no-tabs.t',
+        'xt/release/pod-linkcheck.t',
+        'xt/release/pod-syntax.t',
+        'xt/release/distmeta.t',
+        'xt/release/meta-json.t',
+        'xt/release/mojibake.t',
+        # 'xt/release/kwalitee.t',
+    ], 'xtests are all there') or diag explain \@xtests;
 };
 
 subtest 'enable' => sub {
@@ -96,18 +108,30 @@ subtest 'nonexistent test' => sub {
     );
     $tzil->build;
 
-    my @tests = map $_->name =~ m{^x?t/} ? $_->name : (), $tzil->files->flatten;
-    my $has_eoltest = grep { $_ eq 'xt/author/test-eol.t' } @tests;
+    my @all_tests = map { $_->name =~ m{^x?t/} ? $_->name : () } $tzil->files->flatten;
+    my $has_eoltest = grep { $_ eq 'xt/author/test-eol.t' } @all_tests;
     ok $has_eoltest, 'EOLTests enbled';
 
-    is_filelist \@tests, [qw(           t/00-compile.t                  xt/author/critic.t
-        xt/author/test-eol.t            xt/release/test-version.t       xt/release/pod-coverage.t
-        xt/release/synopsis.t           xt/release/dist-manifest.t      xt/release/meta-json.t
-        xt/release/cpan-changes.t       xt/release/distmeta.t           xt/release/unused-vars.t
-        xt/release/kwalitee.t           xt/release/no-tabs.t            xt/release/minimum-version.t
-        xt/release/portability.t        xt/release/pod-linkcheck.t      xt/release/pod-syntax.t
-        xt/release/mojibake.t
-    )];
+    is_filelist \@all_tests, [
+        't/00-compile.t',
+        'xt/author/critic.t',
+        'xt/author/test-eol.t',
+        'xt/release/unused-vars.t',
+        'xt/release/minimum-version.t',
+        'xt/release/dist-manifest.t',
+        'xt/release/portability.t',
+        'xt/release/pod-coverage.t',
+        'xt/release/test-version.t',
+        'xt/release/cpan-changes.t',
+        'xt/release/synopsis.t',
+        'xt/release/no-tabs.t',
+        'xt/release/pod-linkcheck.t',
+        'xt/release/pod-syntax.t',
+        'xt/release/distmeta.t',
+        'xt/release/meta-json.t',
+        'xt/release/mojibake.t',
+        # 'xt/release/kwalitee.t',
+    ] or diag explain \@all_tests;
 };
 
 END { # Remove (empty) dir created by building the dists
