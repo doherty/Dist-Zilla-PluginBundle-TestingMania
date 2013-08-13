@@ -9,14 +9,15 @@ subtest 'default' => sub {
     plan tests => 2;
 
     my $tzil = Builder->from_config(
-        { dist_root => 'corpus/dist/DZT' },
+        { dist_root => 'corpus/dist/DZT-Sample' },
         { add_files => {
                 'source/dist.ini' => simple_ini(
                     'GatherDir',
                     'MetaYAML',
                     'MetaJSON',
                     '@TestingMania'
-                )
+                ),
+                'source/lib/DZT/Sample.pm' => '',
             }
         },
     );
@@ -47,7 +48,8 @@ subtest 'enable' => sub {
                     'MetaYAML',
                     'MetaJSON',
                     ['@TestingMania' => {enable => 'ConsistentVersionTest'} ],
-                )
+                ),
+                'source/lib/DZT/Sample.pm' => '',
             }
         }
     );
@@ -69,7 +71,8 @@ subtest 'disable' => sub {
                     'MetaYAML',
                     'MetaJSON',
                     ['@TestingMania' => { disable => [qw(Test::EOL NoTabsTests)] } ],
-                )
+                ),
+                'source/lib/DZT/Sample.pm' => '',
             }
         }
     );
@@ -91,6 +94,7 @@ subtest 'nonexistent test' => sub {
                 'source/dist.ini' => simple_ini(
                     ('GatherDir', 'MetaYAML', 'MetaJSON', ['@TestingMania' => { disable => 'Nonexistent', enable => 'Test::EOL' }])
                 ),
+                'source/lib/DZT/Sample.pm' => '',
             },
         },
     );
@@ -109,8 +113,3 @@ subtest 'nonexistent test' => sub {
         xt/release/mojibake.t
     )];
 };
-
-END { # Remove (empty) dir created by building the dists
-    require File::Path;
-    File::Path::rmtree('tmp');
-}

@@ -1,77 +1,78 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+  - Fix spurious test failures
 
 0.19      2013-03-02
- * Allow setting your maximum target perl version explicitly
+  - Allow setting your maximum target perl version explicitly
    with max_target_perl [xdg++]
 
 0.18      2012-07-29
- * Allow setting is_strict and has_version for Test::Version plugin
+  - Allow setting is_strict and has_version for Test::Version plugin
 
 0.17      2012-06-16
- * Use decimal version numbers for prereqs
+  - Use decimal version numbers for prereqs
 
 0.16      2012-06-16
- * Require JSON::PP 2.27103
- * Allow specifying enable/disable multiple times in dist.ini instead of a comma-separated list
+  - Require JSON::PP 2.27103
+  - Allow specifying enable/disable multiple times in dist.ini instead of a comma-separated list
 
 0.15      2011-12-15
- * List prereqs as prereqs instead of use-ing them [Caleb Cushing]
- * Use DZP::Test::EOL (an author test) instead of EOLTests (a release test) [GH #13, thanks to Caleb Cushing]
+  - List prereqs as prereqs instead of use-ing them [Caleb Cushing]
+  - Use DZP::Test::EOL (an author test) instead of EOLTests (a release test) [GH #13, thanks to Caleb Cushing]
 
 0.14      2011-09-08
- * Packaging updates
+  - Packaging updates
 
 v0.13     2011-09-08
- * Add mention of Test::Pod::LinkCheck plugin
- * Update several Test:: plugins
+  - Add mention of Test::Pod::LinkCheck plugin
+  - Update several Test:: plugins
 
 0.012     2011-06-05
- * Add a Test::Version plugin by xenoterrocide; remove superseded plugins
- * Add a Test::Mojibake plugin by creaktive
+  - Add a Test::Version plugin by xenoterrocide; remove superseded plugins
+  - Add a Test::Mojibake plugin by creaktive
 
 0.011     2011-05-09
- * Allow setting a perlcritic config file
+  - Allow setting a perlcritic config file
 
 0.010     2011-04-20
- * Forgotten hash key renamed [rstauner]
- * Added tests
+  - Forgotten hash key renamed [rstauner]
+  - Added tests
 
 0.009     2011-04-19
- * Renamed options for clarity: add -> enable; skip -> disable
- * Don't require the absolute latest prerequisites
- * Require a version of the Test::CPAN::Meta::JSON plugin that prunes itself
+  - Renamed options for clarity: add -> enable; skip -> disable
+  - Don't require the absolute latest prerequisites
+  - Require a version of the Test::CPAN::Meta::JSON plugin that prunes itself
    when META.json isn't present. Users no longer need to disable this test
    in that situation.
 
 0.008     2011-04-16
- * Include a test for META.json - disable it if your dists don't include this
- * Removed ProgCriticTests (was disabled by default)
- * Removed CheckChangesTests
- * Documentation improvements
+  - Include a test for META.json - disable it if your dists don't include this
+  - Removed ProgCriticTests (was disabled by default)
+  - Removed CheckChangesTests
+  - Documentation improvements
 
 0.007     2011-04-12
- * New prereq names
+  - New prereq names
 
 0.006     2011-04-04
- * Set default changelog; thanks to mjgardner
+  - Set default changelog; thanks to mjgardner
 
 0.005     2011-04-02
- * Added ChangesTests
+  - Added ChangesTests
 
 0.004     2011-02-15
- * Removed PodLinkTests; the dependencies are too immature
+  - Removed PodLinkTests; the dependencies are too immature
 
 0.003     2011-01-31
- * Removed ApacheTests
- * Removed PodSpellingTests, which has a fail in the dependency chain, wasn't
+  - Removed ApacheTests
+  - Removed PodSpellingTests, which has a fail in the dependency chain, wasn't
    enabled by default, and is too annoying to bear.
- * Added PodLinkTests
+  - Added PodLinkTests
 
 0.002     2010-11-28
- * Flesh out the chain of dependencies to get full functionality
- * Use Perl_5 license
+  - Flesh out the chain of dependencies to get full functionality
+  - Use Perl_5 license
 
 0.001     2010-10-18
- * Initial version
+  - Initial version
