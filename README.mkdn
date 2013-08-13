@@ -4,7 +4,7 @@ Dist::Zilla::PluginBundle::TestingMania - test your dist with every testing plug
 
 # VERSION
 
-version 0.19
+version 0.20
 
 # SYNOPSIS
 
