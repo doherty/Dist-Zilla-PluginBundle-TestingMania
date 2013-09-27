@@ -17,7 +17,7 @@ my %module_build_args = (
     "Mike Doherty <doherty\@cpan.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-TestingMania",
-  "dist_version" => "0.20",
+  "dist_version" => "0.21",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::TestingMania",
   "recommends" => {},
@@ -30,7 +30,7 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::PodSyntaxTests" => 0,
     "Dist::Zilla::Plugin::Test::CPAN::Changes" => "0.005",
     "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" => "0.003",
-    "Dist::Zilla::Plugin::Test::Compile" => "1.112400",
+    "Dist::Zilla::Plugin::Test::Compile" => "2.033",
     "Dist::Zilla::Plugin::Test::DistManifest" => "2.000001",
     "Dist::Zilla::Plugin::Test::EOL" => 0,
     "Dist::Zilla::Plugin::Test::Kwalitee" => "2.020000",
@@ -56,12 +56,13 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
-    "Capture::Tiny" => 0,
+    "File::Spec" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "Moose::Autobox" => 0,
     "Test::DZil" => 0,
     "Test::More" => "0.88",
-    "autodie" => 0,
-    "blib" => 0
+    "autodie" => 0
   }
 );
 

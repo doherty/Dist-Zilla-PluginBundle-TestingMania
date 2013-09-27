@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::PodSyntaxTests" => 0,
     "Dist::Zilla::Plugin::Test::CPAN::Changes" => "0.005",
     "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" => "0.003",
-    "Dist::Zilla::Plugin::Test::Compile" => "1.112400",
+    "Dist::Zilla::Plugin::Test::Compile" => "2.033",
     "Dist::Zilla::Plugin::Test::DistManifest" => "2.000001",
     "Dist::Zilla::Plugin::Test::EOL" => 0,
     "Dist::Zilla::Plugin::Test::Kwalitee" => "2.020000",
@@ -53,14 +53,15 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Capture::Tiny" => 0,
+    "File::Spec" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "Moose::Autobox" => 0,
     "Test::DZil" => 0,
     "Test::More" => "0.88",
-    "autodie" => 0,
-    "blib" => 0
+    "autodie" => 0
   },
-  "VERSION" => "0.20",
+  "VERSION" => "0.21",
   "test" => {
     "TESTS" => "t/*.t"
   }

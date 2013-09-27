@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.21      2013-09-27
   - Bump Dist::Zilla::Plugin::Test::Compile prereq for Win32 support
 
 0.20      2013-08-13
