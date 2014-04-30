@@ -3,7 +3,7 @@ NAME
     testing plugin conceivable
 
 VERSION
-    version 0.21
+    version 0.22
 
 SYNOPSIS
     In dist.ini:
@@ -70,7 +70,7 @@ DESCRIPTION
     *   Dist::Zilla::Plugin::MojibakeTests, which tests for the correct
         source/documentation character encoding.
 
-    *   Dist::Zilla::Plugin::NoTabsTests, which ensures you don't use *The
+    *   Dist::Zilla::Plugin::Test::NoTabs, which ensures you don't use *The
         Evil Character*. See Test::NoTabs for details. If you wish to
         exclude this plugin, see "Disabling Tests".
 

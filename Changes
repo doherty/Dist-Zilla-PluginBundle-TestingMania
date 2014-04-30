@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.22      2014-04-29
   - Silence NoTabsTests deprecation warnings
 
 0.21      2013-09-27
