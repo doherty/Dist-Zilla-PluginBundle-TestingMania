@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+  - Silence NoTabsTests deprecation warnings
 
 0.21      2013-09-27
   - Bump Dist::Zilla::Plugin::Test::Compile prereq for Win32 support

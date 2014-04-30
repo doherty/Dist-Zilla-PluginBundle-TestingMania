@@ -101,7 +101,7 @@ source/documentation character encoding.
 
 =item *
 
-L<Dist::Zilla::Plugin::NoTabsTests>, which ensures you don't use I<The Evil
+L<Dist::Zilla::Plugin::Test::NoTabs>, which ensures you don't use I<The Evil
 Character>. See L<Test::NoTabs> for details. If you wish to exclude this plugin,
 see L</"Disabling Tests">.
 
@@ -204,16 +204,20 @@ sub configure {
         MetaTests               => 1, # should only be loaded if MetaYAML is loaded, or the file exists in the dist
         'Test::MinimumVersion'  => $self->config_slice('max_target_perl'),
         MojibakeTests           => 1,
-        NoTabsTests             => 1,
+        'Test::NoTabs'          => 1,
         PodCoverageTests        => 1,
         PodSyntaxTests          => 1,
         'Test::Portability'     => 1,
         'Test::Synopsis'        => 1,
         'Test::UnusedVars'      => 1,
     );
-    my @include = ();
+    my %synonyms = ( 'NoTabsTests' => 'Test::NoTabs' );
+    my @include  = ();
 
-    my @disable = map { (split /,\s?/, $_) } @{ $self->disable };
+    my @disable =
+        map { $synonyms{$_} ? $synonyms{$_} : $_ }
+        map { (split /,\s?/, $_) }
+        @{ $self->disable };
     foreach my $plugin (keys %plugins) {
         next if (                              # Skip...
             any { $_ eq $plugin } @disable or  # plugins they asked to skip
@@ -225,7 +229,10 @@ sub configure {
             : $plugin);
     }
 
-    my @enable = map { (split /,\s?/, $_) } @{ $self->enable };
+    my @enable =
+        map { $synonyms{$_} ? $synonyms{$_} : $_ }
+        map { (split /,\s?/, $_) }
+        @{ $self->enable };
     foreach my $plugin (@enable) {
         next unless any { $_ eq $plugin } %plugins; # Skip the plugin unless it is in the list of actual testing plugins
         push(@include, $plugin) unless ( any { $_ eq $plugin } @include or any { $_ eq $plugin } @disable);

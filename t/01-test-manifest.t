@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More 0.88 tests => 4;
+use Test::More 0.88 tests => 5;
 use autodie;
 use Test::DZil;
 use Moose::Autobox;
@@ -70,7 +70,7 @@ subtest 'disable' => sub {
                     'GatherDir',
                     'MetaYAML',
                     'MetaJSON',
-                    ['@TestingMania' => { disable => [qw(Test::EOL NoTabsTests)] } ],
+                    ['@TestingMania' => { disable => [qw(Test::EOL Test::NoTabs)] } ],
                 ),
                 'source/lib/DZT/Sample.pm' => '',
             }
@@ -83,7 +83,30 @@ subtest 'disable' => sub {
     ok !$has_eoltest, 'EOLTests was disabled';
 
     my $has_notabstest = grep { $_ eq 'xt/release/no-tabs.t' } @files;
-    ok !$has_notabstest, 'NoTabsTests was disabled';
+    ok !$has_notabstest, 'Test::NoTabs was disabled';
+};
+
+subtest 'back-compat' => sub {
+    plan tests => 1;
+
+    my $tzil = Builder->from_config(
+        { dist_root => 'corpus/dist/DZT' },
+        { add_files => {
+                'source/dist.ini' => simple_ini(
+                    'GatherDir',
+                    'MetaYAML',
+                    'MetaJSON',
+                    ['@TestingMania' => { disable => [qw(NoTabsTests)] } ],
+                ),
+                'source/lib/DZT/Sample.pm' => '',
+            }
+        }
+    );
+    $tzil->build;
+
+    my @files = map { $_->name } $tzil->files->flatten;
+    my $has_notabstest = grep { $_ eq 'xt/release/no-tabs.t' } @files;
+    ok !$has_notabstest, 'Test::NoTabs was disabled by using the back-compat name (NoTabsTests)';
 };
 
 subtest 'nonexistent test' => sub {
