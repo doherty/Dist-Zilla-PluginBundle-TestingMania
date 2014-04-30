@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+  - Added another back-compat synonym (Test::EOL)
 
 0.22      2014-04-29
   - Silence NoTabsTests deprecation warnings

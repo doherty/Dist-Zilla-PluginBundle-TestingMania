@@ -211,7 +211,10 @@ sub configure {
         'Test::Synopsis'        => 1,
         'Test::UnusedVars'      => 1,
     );
-    my %synonyms = ( 'NoTabsTests' => 'Test::NoTabs' );
+    my %synonyms = (
+        'NoTabsTests' => 'Test::NoTabs',
+        'EOLTests' => 'Test::EOL',
+    );
     my @include  = ();
 
     my @disable =
