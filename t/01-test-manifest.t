@@ -4,6 +4,7 @@ use Test::More 0.88 tests => 5;
 use autodie;
 use Test::DZil;
 use Moose::Autobox;
+use Path::Tiny;
 
 subtest 'default' => sub {
     plan tests => 2;
@@ -24,17 +25,19 @@ subtest 'default' => sub {
     $tzil->build;
 
     my @tests = map $_->name =~ m{^t/} ? $_->name : (), $tzil->files->flatten;
-    is_filelist(\@tests, [qw(t/00-compile.t)],
-        'tests are all there') or diag explain \@tests;
+    is_filelist(\@tests, [qw(t/00-compile.t)], 'tests are all there')
+        or diag explain { have => \@tests, want => [qw(t/00-compile.t)] };
 
-    my @xtests = map $_->name =~ m{^xt/} ? $_->name : (), $tzil->files->flatten;
-    is_filelist(\@xtests, [qw(          xt/author/critic.t              xt/author/test-eol.t
-            xt/release/kwalitee.t       xt/release/unused-vars.t        xt/release/minimum-version.t
-            xt/release/dist-manifest.t  xt/release/portability.t        xt/release/pod-coverage.t
-            xt/release/test-version.t   xt/release/cpan-changes.t       xt/release/synopsis.t
-            xt/release/no-tabs.t        xt/release/pod-linkcheck.t      xt/release/pod-syntax.t
-            xt/release/distmeta.t       xt/release/meta-json.t          xt/release/mojibake.t)],
-        'xtests are all there') or diag explain \@xtests;
+    my @xtests = map $_->name =~ m{^xt/} ? path($_->name)->basename : (), $tzil->files->flatten;
+    my @want = qw(
+        critic.t            test-eol.t          kwalitee.t          unused-vars.t
+        minimum-version.t   dist-manifest.t     portability.t       pod-coverage.t
+        test-version.t      cpan-changes.t      synopsis.t          no-tabs.t
+        pod-linkcheck.t     pod-syntax.t        distmeta.t          meta-json.t
+        mojibake.t
+    );
+    is_filelist(\@xtests, \@want, 'xtests are all there')
+        or diag explain { have => \@xtests, want => \@want };
 };
 
 subtest 'enable' => sub {
@@ -55,7 +58,7 @@ subtest 'enable' => sub {
     );
     $tzil->build;
 
-    my $has_consistentversiontest = grep $_->name eq 'xt/release/consistent-version.t', $tzil->files->flatten;
+    my $has_consistentversiontest = grep path($_->name)->basename eq 'consistent-version.t', $tzil->files->flatten;
     ok $has_consistentversiontest, 'ConsistentVersionTest added itself';
     diag explain map { $_->name } $tzil->files->flatten;
 };
@@ -78,11 +81,11 @@ subtest 'disable' => sub {
     );
     $tzil->build;
 
-    my @files = map { $_->name } $tzil->files->flatten;
-    my $has_eoltest = grep { $_ eq 'xt/author/test-eol.t' } @files;
+    my @files = map { path($_->name)->basename } $tzil->files->flatten;
+    my $has_eoltest = grep { $_ eq 'test-eol.t' } @files;
     ok !$has_eoltest, 'EOLTests was disabled';
 
-    my $has_notabstest = grep { $_ eq 'xt/release/no-tabs.t' } @files;
+    my $has_notabstest = grep { $_ eq 'no-tabs.t' } @files;
     ok !$has_notabstest, 'Test::NoTabs was disabled';
 };
 
@@ -104,8 +107,8 @@ subtest 'back-compat' => sub {
     );
     $tzil->build;
 
-    my @files = map { $_->name } $tzil->files->flatten;
-    my $has_notabstest = grep { $_ eq 'xt/release/no-tabs.t' } @files;
+    my @files = map { path($_->name)->basename } $tzil->files->flatten;
+    my $has_notabstest = grep { $_ eq 'no-tabs.t' } @files;
     ok !$has_notabstest, 'Test::NoTabs was disabled by using the back-compat name (NoTabsTests)';
 };
 
@@ -123,16 +126,15 @@ subtest 'nonexistent test' => sub {
     );
     $tzil->build;
 
-    my @tests = map $_->name =~ m{^x?t/} ? $_->name : (), $tzil->files->flatten;
-    my $has_eoltest = grep { $_ eq 'xt/author/test-eol.t' } @tests;
+    my @tests = map $_->name =~ m{^x?t/} ? path($_->name)->basename : (), $tzil->files->flatten;
+    my $has_eoltest = grep { $_ eq 'test-eol.t' } @tests;
     ok $has_eoltest, 'EOLTests enbled';
 
-    is_filelist \@tests, [qw(           t/00-compile.t                  xt/author/critic.t
-        xt/author/test-eol.t            xt/release/test-version.t       xt/release/pod-coverage.t
-        xt/release/synopsis.t           xt/release/dist-manifest.t      xt/release/meta-json.t
-        xt/release/cpan-changes.t       xt/release/distmeta.t           xt/release/unused-vars.t
-        xt/release/kwalitee.t           xt/release/no-tabs.t            xt/release/minimum-version.t
-        xt/release/portability.t        xt/release/pod-linkcheck.t      xt/release/pod-syntax.t
-        xt/release/mojibake.t
+    is_filelist \@tests, [qw(
+        00-compile.t        critic.t            test-eol.t          test-version.t
+        pod-coverage.t      synopsis.t          dist-manifest.t     meta-json.t
+        cpan-changes.t      distmeta.t          unused-vars.t       kwalitee.t
+        no-tabs.t           minimum-version.t   portability.t       pod-linkcheck.t
+        pod-syntax.t        mojibake.t
     )];
 };
