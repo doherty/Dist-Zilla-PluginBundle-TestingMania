@@ -4,7 +4,7 @@ Dist::Zilla::PluginBundle::TestingMania - test your dist with every testing plug
 
 # VERSION
 
-version 0.22
+version 0.23
 
 # SYNOPSIS
 
@@ -48,7 +48,7 @@ what that means.
 
 - [Dist::Zilla::Plugin::Test::Kwalitee](https://metacpan.org/pod/Dist::Zilla::Plugin::Test::Kwalitee), which performs some basic kwalitee checks.
 _Kwalitee_ is an automatically-measurable guage of how good your software is.
-It bears only a __superficial__ resemblance to the human-measurable guage of
+It bears only a **superficial** resemblance to the human-measurable guage of
 actual quality. See [Test::Kwalitee](https://metacpan.org/pod/Test::Kwalitee) for a description of the tests.
 - [Dist::Zilla::Plugin::MetaTests](https://metacpan.org/pod/Dist::Zilla::Plugin::MetaTests), which performs some extra tests on
 `META.yml`. See [Test::CPAN::Meta](https://metacpan.org/pod/Test::CPAN::Meta) for what that means.

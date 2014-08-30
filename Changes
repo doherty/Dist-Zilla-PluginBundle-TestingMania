@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.23      2014-08-29
   - Added another back-compat synonym (Test::EOL)
   - More robust manifest tests
 
