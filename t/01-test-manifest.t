@@ -30,7 +30,7 @@ subtest 'default' => sub {
 
     my @xtests = map $_->name =~ m{^xt/} ? path($_->name)->basename : (), $tzil->files->flatten;
     my @want = qw(
-        critic.t            test-eol.t          kwalitee.t          unused-vars.t
+        critic.t            eol.t               kwalitee.t          unused-vars.t
         minimum-version.t   dist-manifest.t     portability.t       pod-coverage.t
         test-version.t      cpan-changes.t      synopsis.t          no-tabs.t
         pod-linkcheck.t     pod-syntax.t        distmeta.t          meta-json.t
@@ -82,7 +82,7 @@ subtest 'disable' => sub {
     $tzil->build;
 
     my @files = map { path($_->name)->basename } $tzil->files->flatten;
-    my $has_eoltest = grep { $_ eq 'test-eol.t' } @files;
+    my $has_eoltest = grep { $_ eq 'eol.t' } @files;
     ok !$has_eoltest, 'EOLTests was disabled';
 
     my $has_notabstest = grep { $_ eq 'no-tabs.t' } @files;
@@ -127,11 +127,11 @@ subtest 'nonexistent test' => sub {
     $tzil->build;
 
     my @tests = map $_->name =~ m{^x?t/} ? path($_->name)->basename : (), $tzil->files->flatten;
-    my $has_eoltest = grep { $_ eq 'test-eol.t' } @tests;
+    my $has_eoltest = grep { $_ eq 'eol.t' } @tests;
     ok $has_eoltest, 'EOLTests enbled';
 
     is_filelist \@tests, [qw(
-        00-compile.t        critic.t            test-eol.t          test-version.t
+        00-compile.t        critic.t            eol.t               test-version.t
         pod-coverage.t      synopsis.t          dist-manifest.t     meta-json.t
         cpan-changes.t      distmeta.t          unused-vars.t       kwalitee.t
         no-tabs.t           minimum-version.t   portability.t       pod-linkcheck.t
