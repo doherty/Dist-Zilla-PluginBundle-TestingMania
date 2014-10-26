@@ -1,6 +1,8 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+
+0.24      2014-10-25
   - Test::EOL's test file changed names [rjeschmi]
 
 0.23      2014-08-29
