@@ -1,153 +1,155 @@
-NAME
-    Dist::Zilla::PluginBundle::TestingMania - test your dist with every
-    testing plugin conceivable
+=head1 SYNOPSIS
 
-VERSION
-    version 0.24
+In F<dist.ini>:
 
-SYNOPSIS
-    In dist.ini:
+    [@TestingMania]
 
-        [@TestingMania]
+=head1 DESCRIPTION
 
-DESCRIPTION
-    This plugin bundle collects all the testing plugins for Dist::Zilla
-    which exist (and are not deprecated). This is for the most paranoid
-    people who want to test their dist seven ways to Sunday.
+This plugin bundle collects all the testing plugins for L<Dist::Zilla> which
+exist (and are not deprecated). This is for the most paranoid people who
+want to test their dist seven ways to Sunday.
 
-    Simply add the following near the end of dist.ini:
+Simply add the following near the end of F<dist.ini>:
 
-        [@TestingMania]
+    [@TestingMania]
 
-  Testing plugins
-    *   Dist::Zilla::Plugin::Test::Compile, which performs tests to syntax
-        check your dist.
+=head2 Testing plugins
 
-    *   Dist::Zilla::Plugin::Test::Perl::Critic, which checks your code
-        against best practices. See Test::Perl::Critic and Perl::Critic for
-        details.
+=over 4
 
-        You can set a perlcritic config file:
+=item *
 
-            [@TestingMania]
-            critic_config = perlcriticrc
+L<Dist::Zilla::Plugin::Test::Compile>, which performs tests to syntax check your
+dist.
 
-    *   Dist::Zilla::Plugin::Test::DistManifest, which tests MANIFEST for
-        correctness. See Test::DistManifest for details.
+=item *
 
-    *   Dist::Zilla::Plugin::Test::EOL, which ensures the correct line
-        endings are used (and also checks for trailing whitespace). See
-        Test::EOL for details.
+L<Dist::Zilla::Plugin::Test::Perl::Critic>, which checks your code against best
+practices. See L<Test::Perl::Critic> and L<Perl::Critic> for details.
 
-    *   Dist::Zilla::Plugin::Test::Version, which tests that your dist has
-        version numbers, and that they are valid. See Test::Version for
-        exactly what that means.
+You can set a perlcritic config file:
 
-        You can set "strict_version" and "has_version", and they'll be
-        passed through to the plugin as "is_strict" and "has_version"
-        respectively. See the documentation of Test::Version for a
-        description of these options.
+    [@TestingMania]
+    critic_config = perlcriticrc
 
-    *   Dist::Zilla::Plugin::Test::Kwalitee, which performs some basic
-        kwalitee checks. *Kwalitee* is an automatically-measurable guage of
-        how good your software is. It bears only a superficial resemblance
-        to the human-measurable guage of actual quality. See Test::Kwalitee
-        for a description of the tests.
+=item *
 
-    *   Dist::Zilla::Plugin::MetaTests, which performs some extra tests on
-        META.yml. See Test::CPAN::Meta for what that means.
+L<Dist::Zilla::Plugin::Test::DistManifest>, which tests F<MANIFEST> for
+correctness. See L<Test::DistManifest> for details.
 
-    *   Dist::Zilla::Plugin::Test::CPAN::Meta::JSON, which performs some
-        extra tests on META.json, if it exists. See Test::CPAN::Meta::JSON
-        for what that means.
+=item *
 
-    *   Dist::Zilla::Plugin::Test::MinimumVersion, which tests for the
-        minimum required version of perl. Give the highest version of perl
-        you intend to require as "max_target_perl". The generated test will
-        fail if you accidentally used features from a version of perl newer
-        than that. See Test::MinimumVersion for details and limitations.
+L<Dist::Zilla::Plugin::Test::EOL>, which ensures the correct line endings are
+used (and also checks for trailing whitespace). See L<Test::EOL> for details.
 
-    *   Dist::Zilla::Plugin::MojibakeTests, which tests for the correct
-        source/documentation character encoding.
+=item *
 
-    *   Dist::Zilla::Plugin::Test::NoTabs, which ensures you don't use *The
-        Evil Character*. See Test::NoTabs for details. If you wish to
-        exclude this plugin, see "Disabling Tests".
+L<Dist::Zilla::Plugin::Test::Version>, which tests that your dist has
+version numbers, and that they are valid. See L<Test::Version> for exactly
+what that means.
 
-    *   Dist::Zilla::Plugin::PodCoverageTests, which checks that you have
-        Pod documentation for the things you should have it for. See
-        Test::Pod::Coverage for what that means.
+You can set C<strict_version> and C<has_version>, and they'll be passed through to
+the plugin as C<is_strict> and C<has_version> respectively. See the
+documentation of L<Test::Version> for a description of these options.
 
-    *   Dist::Zilla::Plugin::PodSyntaxTests, which checks that your Pod is
-        well-formed. See Test::Pod and perlpod for details.
+=item *
 
-    *   Dist::Zilla::Plugin::Test::Portability, which performs some basic
-        tests to ensure portability of file names. See
-        Test::Portability::Files for what that means.
+L<Dist::Zilla::Plugin::Test::Kwalitee>, which performs some basic kwalitee checks.
+I<Kwalitee> is an automatically-measurable guage of how good your software is.
+It bears only a B<superficial> resemblance to the human-measurable guage of
+actual quality. See L<Test::Kwalitee> for a description of the tests.
 
-    *   Dist::Zilla::Plugin::Test::Synopsis, which does syntax checking on
-        the code from your SYNOPSIS section. See Test::Synopsis for details
-        and limitations.
+=item *
 
-    *   Dist::Zilla::Plugin::Test::UnusedVars, which checks your dist for
-        unused variables. See Test::Vars for details.
+L<Dist::Zilla::Plugin::MetaTests>, which performs some extra tests on
+F<META.yml>. See L<Test::CPAN::Meta> for what that means.
 
-    *   Dist::Zilla::Plugin::Test::Pod::LinkCheck, which checks the links in
-        your POD. See Test::Pod::LinkCheck for details.
+=item *
 
-    *   Dist::Zilla::Plugin::Test::CPAN::Changes, which checks your
-        changelog for conformance with CPAN::Changes::Spec. See
-        Test::CPAN::Changes for details.
+L<Dist::Zilla::Plugin::Test::CPAN::Meta::JSON>, which performs some extra tests
+on F<META.json>, if it exists. See L<Test::CPAN::Meta::JSON> for what that
+means.
 
-        Set "changelog" in dist.ini if you don't use Changes:
+=item *
 
-            [@TestingMania]
-            changelog = CHANGELOG
+L<Dist::Zilla::Plugin::Test::MinimumVersion>, which tests for the minimum
+required version of perl. Give the highest version of perl you intend to
+require as C<max_target_perl>. The generated test will fail if you accidentally
+used features from a version of perl newer than that. See
+L<Test::MinimumVersion> for details and limitations.
 
-  Disabling Tests
-    To exclude a testing plugin, specify them with "disable" in dist.ini
+=item *
 
-        [@TestingMania]
-        disable = Test::DistManifest
-        disable = Test::Kwalitee
+L<Dist::Zilla::Plugin::MojibakeTests>, which tests for the correct
+source/documentation character encoding.
 
-  Enabling Tests
-    This pluginbundle may have some testing plugins that aren't enabled by
-    default. This option allows you to turn them on. Attempting to add
-    plugins which are not listed above will have *no effect*.
+=item *
 
-    To enable a testing plugin, specify them in dist.ini:
+L<Dist::Zilla::Plugin::Test::NoTabs>, which ensures you don't use I<The Evil
+Character>. See L<Test::NoTabs> for details. If you wish to exclude this plugin,
+see L</"Disabling Tests">.
 
-        [@TestingMania]
-        enable = Test::Compile
+=item *
 
-AVAILABILITY
-    The project homepage is
-    <http://metacpan.org/release/Dist-Zilla-PluginBundle-TestingMania/>.
+L<Dist::Zilla::Plugin::PodCoverageTests>, which checks that you have Pod
+documentation for the things you should have it for. See L<Test::Pod::Coverage>
+for what that means.
 
-    The latest version of this module is available from the Comprehensive
-    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
-    CPAN site near you, or see
-    <https://metacpan.org/module/Dist::Zilla::PluginBundle::TestingMania/>.
+=item *
 
-SOURCE
-    The development version is on github at
-    <http://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania> and may
-    be cloned from
-    <git://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania.git>
+L<Dist::Zilla::Plugin::PodSyntaxTests>, which checks that your Pod is
+well-formed. See L<Test::Pod> and L<perlpod> for details.
 
-BUGS AND LIMITATIONS
-    You can make new bug reports, and view existing ones, through the web
-    interface at
-    <https://github.com/doherty/Dist-Zilla-PluginBundle-TestingMania/issues>
-    .
+=item *
 
-AUTHOR
-    Mike Doherty <doherty@cpan.org>
+L<Dist::Zilla::Plugin::Test::Portability>, which performs some basic tests to
+ensure portability of file names. See L<Test::Portability::Files> for what
+that means.
 
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2010 by Mike Doherty.
+=item *
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+L<Dist::Zilla::Plugin::Test::Synopsis>, which does syntax checking on the code
+from your SYNOPSIS section. See L<Test::Synopsis> for details and limitations.
+
+=item *
+
+L<Dist::Zilla::Plugin::Test::UnusedVars>, which checks your dist for unused
+variables. See L<Test::Vars> for details.
+
+=item *
+
+L<Dist::Zilla::Plugin::Test::Pod::LinkCheck>, which checks the links in your POD.
+See L<Test::Pod::LinkCheck> for details.
+
+=item *
+
+L<Dist::Zilla::Plugin::Test::CPAN::Changes>, which checks your changelog for
+conformance with L<CPAN::Changes::Spec>. See L<Test::CPAN::Changes> for details.
+
+Set C<changelog> in F<dist.ini> if you don't use F<Changes>:
+
+    [@TestingMania]
+    changelog = CHANGELOG
+
+=back
+
+=head2 Disabling Tests
+
+To exclude a testing plugin, specify them with C<disable> in F<dist.ini>
+
+    [@TestingMania]
+    disable = Test::DistManifest
+    disable = Test::Kwalitee
+
+=head2 Enabling Tests
+
+This pluginbundle may have some testing plugins that aren't
+enabled by default. This option allows you to turn them on. Attempting to add
+plugins which are not listed above will have I<no effect>.
+
+To enable a testing plugin, specify them in F<dist.ini>:
+
+    [@TestingMania]
+    enable = Test::Compile
 
