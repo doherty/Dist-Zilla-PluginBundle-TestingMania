@@ -1,6 +1,7 @@
 Changelog for Dist::Zilla::PluginBundle::TestingMania
 
 {{$NEXT}}
+  - Bump DZP::Test::EOL version [dolmen]
 
 0.24      2014-10-25
   - Test::EOL's test file changed names [rjeschmi]
